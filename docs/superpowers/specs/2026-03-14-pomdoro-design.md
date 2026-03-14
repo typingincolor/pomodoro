@@ -131,19 +131,114 @@ Accessed via gear icon or `Cmd+,`:
 - `@AppStorage` for all settings (digit color, sounds, default times, window size)
 - Timer state does not persist across app launches
 
-## Core Types
+## Architecture
 
-### `TimerModel` (`@Observable`)
-State for a single timer: remaining/elapsed time, target time, mode (countdown/timer), running state. Internally uses a `startDate` reference point; elapsed time is computed as `Date.now - startDate`. The view layer uses `TimelineView(.animation)` to drive display refresh — the model itself has no timer/runloop dependency.
+### Principles
+- **Clear separation of UX and business logic.** Views are thin — they read state and forward user actions. All timer logic, chaining, and sound triggering lives in testable model/service types.
+- **Protocol-based dependency injection.** External side effects (sound playback, notifications, date/time) are accessed through protocols so tests can inject mocks.
+- **TDD for everything.** Tests are written before implementation for all business logic. UI tests cover end-to-end user flows.
 
-### `PomodoroManager` (`@Observable`)
-Owns two `TimerModel` instances + chaining toggle. Handles T1→T2 transition logic and alarm triggering.
+### Protocols
 
-### `SoundManager`
-Plays notification sounds (short beep vs full alarm), manages user sound preferences.
+```swift
+protocol TimeProvider {
+    var now: Date { get }
+}
 
-### `SettingsModel`
-Wraps `@AppStorage` values for digit color, selected sounds, default times, window size.
+protocol SoundPlaying {
+    func playTransitionBeep()
+    func playCompletionAlarm()
+    func stopAlarm()
+}
+
+protocol NotificationSending {
+    func send(title: String, body: String)
+}
+
+protocol SettingsStoring {
+    var digitColor: Color { get set }
+    var transitionSound: String { get set }
+    var completionSound: String { get set }
+    var defaultT1Minutes: Int { get set }
+    var defaultT1Seconds: Int { get set }
+    var defaultT2Minutes: Int { get set }
+    var defaultT2Seconds: Int { get set }
+    var windowSize: WindowSize { get set }
+}
+```
+
+### Core Types
+
+**`TimerModel` (`@Observable`)**
+State for a single timer: remaining/elapsed time, target time, mode (countdown/timer), running/paused state. Accepts a `TimeProvider` for testability. Internally uses a `startDate` reference point; elapsed time is computed as `timeProvider.now - startDate`. The view layer uses `TimelineView(.animation)` to drive display refresh — the model itself has no timer/runloop dependency.
+
+**`PomodoroManager` (`@Observable`)**
+Owns two `TimerModel` instances + chaining toggle. Accepts `SoundPlaying` and `NotificationSending` protocols. Handles T1→T2 transition logic and triggers sounds/notifications through the injected protocols.
+
+**`SoundManager: SoundPlaying`**
+Concrete implementation using `AVAudioPlayer` for bundled sounds and `NSSound` for system sounds. Manages user sound preferences.
+
+**`NotificationManager: NotificationSending`**
+Concrete implementation using `UNUserNotificationCenter`.
+
+**`AppSettingsStore: SettingsStoring`**
+Concrete implementation wrapping `@AppStorage` values for digit color, selected sounds, default times, window size.
+
+### Dependency Graph
+
+```
+Views → PomodoroManager → TimerModel (× 2)
+                        → SoundPlaying (protocol)
+                        → NotificationSending (protocol)
+                        → TimeProvider (protocol)
+                        → SettingsStoring (protocol)
+```
+
+Views only depend on `PomodoroManager`. All side effects flow through protocols.
+
+## Testing
+
+### Unit Tests (XCTest, TDD)
+
+All business logic is tested with mocks injected via protocols:
+
+**TimerModel tests:**
+- Countdown: start → elapsed time → reaches zero → reports completion
+- Count-up: start → elapsed time increases correctly
+- Pause/resume: pause preserves elapsed, resume continues from paused point
+- Reset: returns to set value (countdown) or 00:00 (timer)
+- Time clamping: minutes 0–99, seconds 0–59
+- Edge cases: start at 00:00 in countdown does nothing
+
+**PomodoroManager tests:**
+- Unchained: T1 and T2 operate independently
+- Chaining: toggling chain forces countdown mode
+- Chained sequence: T1 completes → mock sound `playTransitionBeep()` called → T2 starts
+- Chained completion: T2 completes → mock sound `playCompletionAlarm()` called → mock notification sent
+- Chained pause: pauses active timer, play resumes chain
+- Chained reset: resets both to original values
+- Standalone completion: timer finishes → alarm + notification
+
+**SoundManager tests:**
+- Correct sound file loaded for user selection
+- Preview plays the selected sound
+
+**MockTimeProvider** allows tests to control time precisely — advance by exact intervals without waiting.
+
+### UI Tests (XCUITest)
+
+Automated end-to-end tests exercising the full app:
+
+- **Set and run countdown:** Click digits → type time → play → verify display counts down → verify alarm on completion
+- **Set and run timer (count-up):** Toggle to timer mode → play → verify display counts up
+- **Pause and resume:** Play → pause → verify time frozen → play → verify resumes
+- **Reset:** Play → pause → reset → verify returns to set value
+- **Chained flow:** Set T1 and T2 → chain → play → verify T1 runs → verify T2 auto-starts → verify completion
+- **Mode toggle:** Click arrow → verify mode switches
+- **Chain toggle:** Click chain link → verify T2 controls hidden, mode forced to countdown
+- **Digit input:** Click minutes → type "15" → verify display shows 15 → click seconds → type "30" → verify 30
+- **Input disabled while running:** Start timer → click digits → verify no edit mode
+- **Window size switching:** Change size in settings → verify window resizes proportionally
 
 ## View Hierarchy
 
