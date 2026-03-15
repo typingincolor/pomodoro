@@ -25,7 +25,9 @@ final class SoundManager: SoundPlaying, @unchecked Sendable {
 
         alarmTimer?.invalidate()
         alarmTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: false) { [weak self] _ in
-            self?.stopAlarm()
+            Task { @MainActor in
+                self?.stopAlarm()
+            }
         }
     }
 

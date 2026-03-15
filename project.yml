@@ -16,6 +16,7 @@ targets:
       - path: Pomdoro
         excludes:
           - "**/*.md"
+          - "**/*.entitlements"
   PomdoroTests:
     type: bundle.unit-test
     platform: macOS

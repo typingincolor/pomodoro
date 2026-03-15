@@ -68,7 +68,6 @@
 		11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSettingsStore.swift; sourceTree = "<group>"; };
 		26FCC96D00F4B99A98118856 /* ChainLinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainLinkButton.swift; sourceTree = "<group>"; };
 		2C302A03143E577E5ED427C3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		2ECAE908336AECD2325D5494 /* Pomdoro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pomdoro.entitlements; sourceTree = "<group>"; };
 		2F5002333C2D8773D565ED33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48A4270E123F68B96363667D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigit.swift; sourceTree = "<group>"; };
@@ -141,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				2F5002333C2D8773D565ED33 /* AppDelegate.swift */,
-				2ECAE908336AECD2325D5494 /* Pomdoro.entitlements */,
 				FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */,
 				5962DA1A76E3B53D11AB8DCF /* Models */,
 				BE8E99A792AACAD9E250367B /* Protocols */,
