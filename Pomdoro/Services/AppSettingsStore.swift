@@ -7,8 +7,6 @@ final class AppSettingsStore: SettingsStoring {
 
     private enum Keys {
         static let digitColorHex = "digitColorHex"
-        static let transitionSound = "transitionSound"
-        static let completionSound = "completionSound"
         static let defaultT1Minutes = "defaultT1Minutes"
         static let defaultT1Seconds = "defaultT1Seconds"
         static let defaultT2Minutes = "defaultT2Minutes"
@@ -18,12 +16,6 @@ final class AppSettingsStore: SettingsStoring {
 
     var digitColorHex: String {
         didSet { defaults.set(digitColorHex, forKey: Keys.digitColorHex) }
-    }
-    var transitionSound: String {
-        didSet { defaults.set(transitionSound, forKey: Keys.transitionSound) }
-    }
-    var completionSound: String {
-        didSet { defaults.set(completionSound, forKey: Keys.completionSound) }
     }
     var defaultT1Minutes: Int {
         didSet { defaults.set(defaultT1Minutes, forKey: Keys.defaultT1Minutes) }
@@ -44,8 +36,6 @@ final class AppSettingsStore: SettingsStoring {
     init() {
         defaults.register(defaults: [
             Keys.digitColorHex: "FFFFFF",
-            Keys.transitionSound: "transition-beep",
-            Keys.completionSound: "completion-alarm",
             Keys.defaultT1Minutes: 25,
             Keys.defaultT1Seconds: 0,
             Keys.defaultT2Minutes: 5,
@@ -54,8 +44,6 @@ final class AppSettingsStore: SettingsStoring {
         ])
 
         self.digitColorHex = defaults.string(forKey: Keys.digitColorHex) ?? "FFFFFF"
-        self.transitionSound = defaults.string(forKey: Keys.transitionSound) ?? "transition-beep"
-        self.completionSound = defaults.string(forKey: Keys.completionSound) ?? "completion-alarm"
         self.defaultT1Minutes = defaults.integer(forKey: Keys.defaultT1Minutes)
         self.defaultT1Seconds = defaults.integer(forKey: Keys.defaultT1Seconds)
         self.defaultT2Minutes = defaults.integer(forKey: Keys.defaultT2Minutes)

@@ -52,24 +52,23 @@ struct TimerControls: View {
             .disabled(isRunning && !isCompleted && !isPaused)
             .opacity((isPaused || isCompleted || !isRunning) ? 1.0 : 0.3)
 
-            // Silence alarm button — only visible when alarm is playing
-            if isAlarmPlaying {
-                Button(action: onStopAlarm) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8 * scale)
-                            .fill(amberBackground)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8 * scale)
-                                    .stroke(amberBorder, lineWidth: 1.5)
-                            )
-                        Image(systemName: "speaker.slash.fill")
-                            .font(.system(size: 14 * scale))
-                            .foregroundColor(.orange)
-                    }
+            Button(action: onStopAlarm) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8 * scale)
+                        .fill(amberBackground)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8 * scale)
+                                .stroke(amberBorder, lineWidth: 1.5)
+                        )
+                    Image(systemName: "speaker.slash.fill")
+                        .font(.system(size: 14 * scale))
+                        .foregroundColor(.orange)
                 }
-                .buttonStyle(.plain)
-                .frame(width: buttonSize * scale, height: buttonSize * scale)
             }
+            .buttonStyle(.plain)
+            .frame(width: buttonSize * scale, height: buttonSize * scale)
+            .opacity(isAlarmPlaying ? 1.0 : 0.0)
+            .allowsHitTesting(isAlarmPlaying)
         }
     }
 

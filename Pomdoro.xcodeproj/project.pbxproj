@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02B75640143493674AB368DE /* MainTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7128026E489297080A81DA6 /* MainTimerView.swift */; };
-		05069398425E47A2D5ACC5B5 /* transition-beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B36B07D8F9B6C61C38DA4574 /* transition-beep.aiff */; };
+		05069398425E47A2D5ACC5B5 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = B36B07D8F9B6C61C38DA4574 /* alarm.wav */; };
 		090DF8A3D78D26D49AC5ED30 /* TimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588156C39CBA918541300F3 /* TimeProvider.swift */; };
 		0EE8EB8AD2126BFB2994A863 /* ModeArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC2C0C5676E76E05F26477 /* ModeArrow.swift */; };
 		1E1FB310188F1A9301D24A06 /* TimerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A16E76FDD147F320F66020 /* TimerControls.swift */; };
@@ -37,10 +37,11 @@
 		C0B28A8163CE4EC5AA92608E /* SoundManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503DD09BEACBEC000F5FD27 /* SoundManagerTests.swift */; };
 		CD2D568043A08C3EDAA294BC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A4270E123F68B96363667D /* NotificationManager.swift */; };
 		D7E422972F2D1FE97B14DD6D /* PomdoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E639432B3B68DCA2EF70207 /* PomdoroUITests.swift */; };
-		EA33904E40B869BD33D3E1CF /* completion-alarm.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B646614F11E34FC34AB60BB8 /* completion-alarm.aiff */; };
+/* removed completion-alarm.aiff */
 		F4BFD4F7BBDB8E825067C5C5 /* AppSettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B41306752A466DF441DA5 /* AppSettingsStoreTests.swift */; };
 		F86BF60BBAC7193DAE3F238D /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09417D69B7C0A0FBEC84A244 /* TimerModel.swift */; };
 		FDA9209307A2E472E20DE9BE /* DigitInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A2C81ED921AB56B394D718 /* DigitInputTests.swift */; };
+		AABBCC009988776655443322 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABBCC001122334455667788 /* AppDelegateTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,9 +86,9 @@
 		A77AB310B486084751550415 /* PomdoroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomdoroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB46EE64EF249CDC93CBDE8 /* PomdoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomdoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEDFBAEC91E7BB5B692EBA7A /* MockSoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSoundPlayer.swift; sourceTree = "<group>"; };
-		B36B07D8F9B6C61C38DA4574 /* transition-beep.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "transition-beep.aiff"; sourceTree = "<group>"; };
+		B36B07D8F9B6C61C38DA4574 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "alarm.wav"; sourceTree = "<group>"; };
 		B57D4796D78118EED56EC0E5 /* TimerModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModelTests.swift; sourceTree = "<group>"; };
-		B646614F11E34FC34AB60BB8 /* completion-alarm.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "completion-alarm.aiff"; sourceTree = "<group>"; };
+/* removed completion-alarm.aiff file ref */
 		B7128026E489297080A81DA6 /* MainTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimerView.swift; sourceTree = "<group>"; };
 		C25526E31FF890AEB1DBB0C2 /* SevenSegmentDigitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigitTests.swift; sourceTree = "<group>"; };
 		CEFC2C0C5676E76E05F26477 /* ModeArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeArrow.swift; sourceTree = "<group>"; };
@@ -98,12 +99,14 @@
 		EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoring.swift; sourceTree = "<group>"; };
 		EFBD6DDC1334A437038CCC1D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroApp.swift; sourceTree = "<group>"; };
+		AABBCC001122334455667788 /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		09FBECACC8C0CBE9AA81EE2E /* PomdoroTests */ = {
 			isa = PBXGroup;
 			children = (
+				AABBCC001122334455667788 /* AppDelegateTests.swift */,
 				977B41306752A466DF441DA5 /* AppSettingsStoreTests.swift */,
 				71A2C81ED921AB56B394D718 /* DigitInputTests.swift */,
 				7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */,
@@ -130,8 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				D3BBC9FF49A442DECAE90132 /* Assets.xcassets */,
-				B646614F11E34FC34AB60BB8 /* completion-alarm.aiff */,
-				B36B07D8F9B6C61C38DA4574 /* transition-beep.aiff */,
+				B36B07D8F9B6C61C38DA4574 /* alarm.wav */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -322,8 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6740E40D3C6FC7290C1743E3 /* Assets.xcassets in Resources */,
-				EA33904E40B869BD33D3E1CF /* completion-alarm.aiff in Resources */,
-				05069398425E47A2D5ACC5B5 /* transition-beep.aiff in Resources */,
+				05069398425E47A2D5ACC5B5 /* alarm.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABBCC009988776655443322 /* AppDelegateTests.swift in Sources */,
 				F4BFD4F7BBDB8E825067C5C5 /* AppSettingsStoreTests.swift in Sources */,
 				FDA9209307A2E472E20DE9BE /* DigitInputTests.swift in Sources */,
 				A7032B12863B291F4448DA11 /* MockNotificationSender.swift in Sources */,
@@ -485,6 +487,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pomdoro/Pomdoro.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -537,6 +540,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pomdoro/Pomdoro.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

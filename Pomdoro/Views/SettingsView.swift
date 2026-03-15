@@ -1,9 +1,8 @@
 import SwiftUI
-import AppKit
 
 struct SettingsView: View {
-    @Environment(\.dismiss) private var dismiss
     var settings: AppSettingsStore
+    var onDone: (() -> Void)?
 
     private let colorPresets: [(String, Color, String)] = [
         ("White", .white, "FFFFFF"),
@@ -17,8 +16,8 @@ struct SettingsView: View {
     @State private var useCustomColor = false
 
     var body: some View {
-        Form {
-            Section("Digit Color") {
+        VStack(alignment: .leading, spacing: 20) {
+            section("Digit Color") {
                 HStack(spacing: 12) {
                     ForEach(colorPresets, id: \.0) { name, color, hex in
                         Button(action: {
@@ -46,82 +45,32 @@ struct SettingsView: View {
                 }
             }
 
-            Section("Sounds") {
-                HStack {
-                    Text("Transition beep:")
-                    Picker("", selection: Binding(
-                        get: { settings.transitionSound },
-                        set: { settings.transitionSound = $0 }
-                    )) {
-                        Text("Default Beep").tag("transition-beep")
-                        Text("Tink").tag("Tink")
-                        Text("Pop").tag("Pop")
-                        Text("Ping").tag("Ping")
-                    }
-                    .frame(width: 150)
+            section("Default Times") {
+                HStack(spacing: 16) {
+                    timerRow("Timer 1:",
+                             minutes: Binding(
+                                get: { settings.defaultT1Minutes },
+                                set: { settings.defaultT1Minutes = min(max($0, 0), 99) }
+                             ),
+                             seconds: Binding(
+                                get: { settings.defaultT1Seconds },
+                                set: { settings.defaultT1Seconds = min(max($0, 0), 59) }
+                             ))
 
-                    Button("▶") {
-                        if let sound = NSSound(named: settings.transitionSound) {
-                            sound.play()
-                        }
-                    }
-                }
-
-                HStack {
-                    Text("Completion alarm:")
-                    Picker("", selection: Binding(
-                        get: { settings.completionSound },
-                        set: { settings.completionSound = $0 }
-                    )) {
-                        Text("Default Alarm").tag("completion-alarm")
-                        Text("Sosumi").tag("Sosumi")
-                        Text("Glass").tag("Glass")
-                        Text("Purr").tag("Purr")
-                    }
-                    .frame(width: 150)
-
-                    Button("▶") {
-                        if let sound = NSSound(named: settings.completionSound) {
-                            sound.play()
-                        }
-                    }
+                    timerRow("Timer 2:",
+                             minutes: Binding(
+                                get: { settings.defaultT2Minutes },
+                                set: { settings.defaultT2Minutes = min(max($0, 0), 99) }
+                             ),
+                             seconds: Binding(
+                                get: { settings.defaultT2Seconds },
+                                set: { settings.defaultT2Seconds = min(max($0, 0), 59) }
+                             ))
                 }
             }
 
-            Section("Default Times") {
-                HStack {
-                    Text("Timer 1:")
-                    TextField("Min", value: Binding(
-                        get: { settings.defaultT1Minutes },
-                        set: { settings.defaultT1Minutes = min(max($0, 0), 99) }
-                    ), format: .number)
-                    .frame(width: 50)
-                    Text(":")
-                    TextField("Sec", value: Binding(
-                        get: { settings.defaultT1Seconds },
-                        set: { settings.defaultT1Seconds = min(max($0, 0), 59) }
-                    ), format: .number)
-                    .frame(width: 50)
-                }
-
-                HStack {
-                    Text("Timer 2:")
-                    TextField("Min", value: Binding(
-                        get: { settings.defaultT2Minutes },
-                        set: { settings.defaultT2Minutes = min(max($0, 0), 99) }
-                    ), format: .number)
-                    .frame(width: 50)
-                    Text(":")
-                    TextField("Sec", value: Binding(
-                        get: { settings.defaultT2Seconds },
-                        set: { settings.defaultT2Seconds = min(max($0, 0), 59) }
-                    ), format: .number)
-                    .frame(width: 50)
-                }
-            }
-
-            Section("Window Size") {
-                Picker("Size:", selection: Binding(
+            section("Window Size") {
+                Picker("", selection: Binding(
                     get: { settings.windowSize },
                     set: { settings.windowSize = $0 }
                 )) {
@@ -135,14 +84,42 @@ struct SettingsView: View {
                         .accessibilityIdentifier("windowSizeXL")
                 }
                 .pickerStyle(.radioGroup)
+                .labelsHidden()
+            }
+
+            Spacer()
+
+            HStack {
+                Spacer()
+                Button("OK") { onDone?() }
+                    .keyboardShortcut(.defaultAction)
             }
         }
-        .formStyle(.grouped)
-        .frame(width: 400, height: 500)
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Done") { dismiss() }
-            }
+        .padding(24)
+        .frame(width: 380, height: 420)
+    }
+
+    @ViewBuilder
+    private func section(_ title: String, @ViewBuilder content: () -> some View) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.headline)
+            content()
+        }
+    }
+
+    @ViewBuilder
+    private func timerRow(_ label: String, minutes: Binding<Int>, seconds: Binding<Int>) -> some View {
+        HStack(spacing: 4) {
+            Text(label)
+                .foregroundColor(.secondary)
+            TextField("", value: minutes, format: .number)
+                .frame(width: 36)
+                .textFieldStyle(.roundedBorder)
+            Text(":")
+            TextField("", value: seconds, format: .number.precision(.integerLength(2)))
+                .frame(width: 36)
+                .textFieldStyle(.roundedBorder)
         }
     }
 }

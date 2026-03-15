@@ -9,7 +9,7 @@ struct PomodoroApp: App {
 
     init() {
         let settingsStore = AppSettingsStore()
-        let soundManager = SoundManager(settings: settingsStore)
+        let soundManager = SoundManager()
         let notificationManager = NotificationManager()
         let manager = PomodoroManager(
             timeProvider: SystemTimeProvider(),
@@ -32,25 +32,12 @@ struct PomodoroApp: App {
 
     var body: some Scene {
         MenuBarExtra {
-            if !appDelegate.isPanelOpen {
-                MainTimerView(
-                    settings: settings,
-                    scale: settings.windowSize.scaleFactor,
-                    onDetach: { appDelegate.openPanel(manager: manager, settings: settings) }
-                )
-                .environment(manager)
-            } else {
-                VStack {
-                    Button("Show Window") {
-                        appDelegate.bringPanelToFront()
-                    }
-                    Divider()
-                    Button("Quit Pomdoro") {
-                        NSApplication.shared.terminate(nil)
-                    }
-                }
-                .padding()
-            }
+            MainTimerView(
+                settings: settings,
+                scale: settings.windowSize.scaleFactor,
+                onOpenSettings: { appDelegate.openSettings(settings: settings) }
+            )
+            .environment(manager)
         } label: {
             menuBarLabel
         }
