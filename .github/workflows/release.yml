@@ -84,10 +84,10 @@ jobs:
         run: |
           set -euo pipefail
           xcodebuild archive \
-            -project Pomdoro.xcodeproj \
-            -scheme Pomdoro \
+            -project Pomodoro.xcodeproj \
+            -scheme Pomodoro \
             -destination 'generic/platform=macOS' \
-            -archivePath build/Pomdoro.xcarchive \
+            -archivePath build/Pomodoro.xcarchive \
             -configuration Release \
             MARKETING_VERSION="$RELEASE_VERSION" \
             CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
@@ -120,7 +120,7 @@ jobs:
           PLIST
 
           xcodebuild -exportArchive \
-            -archivePath build/Pomdoro.xcarchive \
+            -archivePath build/Pomodoro.xcarchive \
             -exportOptionsPlist export-options.plist \
             -exportPath build/export
 
@@ -128,19 +128,19 @@ jobs:
         run: |
           set -euo pipefail
           echo "Verifying code signature..."
-          codesign --verify --deep --strict --verbose=2 build/export/Pomdoro.app
+          codesign --verify --deep --strict --verbose=2 build/export/Pomodoro.app
 
       - name: Create DMG
         run: |
           set -euo pipefail
-          DMG_NAME="Pomdoro-${BUILD_NUMBER}.dmg"
+          DMG_NAME="Pomodoro-${BUILD_NUMBER}.dmg"
           echo "DMG_NAME=$DMG_NAME" >> "$GITHUB_ENV"
 
           mkdir -p build/dmg
-          cp -R build/export/Pomdoro.app build/dmg/
+          cp -R build/export/Pomodoro.app build/dmg/
           ln -s /Applications build/dmg/Applications
 
-          hdiutil create -volname "Pomdoro" \
+          hdiutil create -volname "Pomodoro" \
             -srcfolder build/dmg \
             -ov -format UDZO \
             "build/$DMG_NAME"
@@ -192,7 +192,7 @@ jobs:
           else
             gh release create "v${BUILD_NUMBER}" \
               "build/$DMG_NAME" \
-              --title "Pomdoro Build ${BUILD_NUMBER}" \
+              --title "Pomodoro Build ${BUILD_NUMBER}" \
               --generate-notes
           fi
 
@@ -201,37 +201,37 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          DMG_URL="https://github.com/typingincolor/pomdoro/releases/download/v${BUILD_NUMBER}/${DMG_NAME}"
+          DMG_URL="https://github.com/typingincolor/pomodoro/releases/download/v${BUILD_NUMBER}/${DMG_NAME}"
           SHA256=$(shasum -a 256 "build/$DMG_NAME" | awk '{print $1}')
 
-          cat > /tmp/pomdoro.rb << CASK
-          cask "pomdoro" do
+          cat > /tmp/pomodoro.rb << CASK
+          cask "pomodoro" do
             version "${BUILD_NUMBER}"
             sha256 "${SHA256}"
 
             url "${DMG_URL}"
-            name "Pomdoro"
+            name "Pomodoro"
             desc "macOS menu bar pomodoro timer with dual seven-segment LCD displays"
-            homepage "https://github.com/typingincolor/pomdoro"
+            homepage "https://github.com/typingincolor/pomodoro"
 
-            app "Pomdoro.app"
+            app "Pomodoro.app"
 
             zap trash: [
-              "~/Library/Preferences/com.pomdoro.Pomdoro.plist",
+              "~/Library/Preferences/com.pomodoro.Pomodoro.plist",
             ]
           end
           CASK
 
-          gh api repos/typingincolor/homebrew-tap/contents/Casks/pomdoro.rb \
+          gh api repos/typingincolor/homebrew-tap/contents/Casks/pomodoro.rb \
             --method PUT \
-            --field message="Update pomdoro to build ${BUILD_NUMBER}" \
-            --field content="$(base64 -i /tmp/pomdoro.rb)" \
-            --field sha="$(gh api repos/typingincolor/homebrew-tap/contents/Casks/pomdoro.rb --jq '.sha' 2>/dev/null || echo '')" \
+            --field message="Update pomodoro to build ${BUILD_NUMBER}" \
+            --field content="$(base64 -i /tmp/pomodoro.rb)" \
+            --field sha="$(gh api repos/typingincolor/homebrew-tap/contents/Casks/pomodoro.rb --jq '.sha' 2>/dev/null || echo '')" \
             || \
-          gh api repos/typingincolor/homebrew-tap/contents/Casks/pomdoro.rb \
+          gh api repos/typingincolor/homebrew-tap/contents/Casks/pomodoro.rb \
             --method PUT \
-            --field message="Add pomdoro cask build ${BUILD_NUMBER}" \
-            --field content="$(base64 -i /tmp/pomdoro.rb)"
+            --field message="Add pomodoro cask build ${BUILD_NUMBER}" \
+            --field content="$(base64 -i /tmp/pomodoro.rb)"
 
       - name: Upload logs on failure
         if: failure()

@@ -1,4 +1,4 @@
-# Pomdoro — Design Spec
+# Pomodoro — Design Spec
 
 ## Overview
 
