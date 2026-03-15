@@ -6,6 +6,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   build-sign-notarize:
     runs-on: macos-15
@@ -16,12 +20,15 @@ jobs:
 
       - name: Determine build number
         run: |
+          set -euo pipefail
           LATEST=$(gh release list --limit 1 --json tagName --jq '.[0].tagName // empty')
           if [ -z "$LATEST" ]; then
             BUILD_NUMBER=1
+          elif [[ "$LATEST" =~ ^v([0-9]+)$ ]]; then
+            BUILD_NUMBER=$(( ${BASH_REMATCH[1]} + 1 ))
           else
-            PREV=${LATEST#v}
-            BUILD_NUMBER=$((PREV + 1))
+            echo "::error::Unexpected tag format: $LATEST (expected vN)"
+            exit 1
           fi
           echo "BUILD_NUMBER=$BUILD_NUMBER" >> "$GITHUB_ENV"
           echo "RELEASE_VERSION=1.0.$BUILD_NUMBER" >> "$GITHUB_ENV"
@@ -30,7 +37,16 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.3.app/Contents/Developer
+        run: |
+          set -euo pipefail
+          XCODE_PATH="/Applications/Xcode_16.3.app/Contents/Developer"
+          if [ ! -d "$XCODE_PATH" ]; then
+            echo "::error::Xcode not found at $XCODE_PATH"
+            ls /Applications/Xcode* 2>/dev/null || true
+            exit 1
+          fi
+          sudo xcode-select -s "$XCODE_PATH"
+          xcodebuild -version
 
       - name: Install xcodegen
         run: brew install xcodegen
@@ -43,6 +59,7 @@ jobs:
           CERTIFICATE_P12: ${{ secrets.CERTIFICATE_P12 }}
           CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
         run: |
+          set -euo pipefail
           KEYCHAIN_PATH=$RUNNER_TEMP/signing.keychain-db
           CERTIFICATE_PATH=$RUNNER_TEMP/certificate.p12
 
@@ -51,6 +68,7 @@ jobs:
           security create-keychain -p "" "$KEYCHAIN_PATH"
           security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
           security unlock-keychain -p "" "$KEYCHAIN_PATH"
+          security default-keychain -s "$KEYCHAIN_PATH"
 
           security import "$CERTIFICATE_PATH" -P "$CERTIFICATE_PASSWORD" \
             -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
@@ -64,7 +82,7 @@ jobs:
         env:
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: |
-          set -o pipefail
+          set -euo pipefail
           xcodebuild archive \
             -project Pomdoro.xcodeproj \
             -scheme Pomdoro \
@@ -77,12 +95,13 @@ jobs:
             CODE_SIGN_IDENTITY="Developer ID Application" \
             CODE_SIGN_STYLE=Manual \
             ENABLE_HARDENED_RUNTIME=YES \
-            2>&1 | tee build.log | tail -30
+            2>&1 | tee build.log
 
       - name: Export app from archive
         env:
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: |
+          set -euo pipefail
           cat > export-options.plist << PLIST
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -105,8 +124,17 @@ jobs:
             -exportOptionsPlist export-options.plist \
             -exportPath build/export
 
+      - name: Verify code signature
+        run: |
+          set -euo pipefail
+          echo "Verifying code signature..."
+          codesign --verify --deep --strict --verbose=2 build/export/Pomdoro.app
+          echo "Checking Gatekeeper approval..."
+          spctl -a -t exec -vvv build/export/Pomdoro.app
+
       - name: Create DMG
         run: |
+          set -euo pipefail
           DMG_NAME="Pomdoro-${BUILD_NUMBER}.dmg"
           echo "DMG_NAME=$DMG_NAME" >> "$GITHUB_ENV"
 
@@ -128,7 +156,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Submit and capture the JSON output for reliable ID parsing
           xcrun notarytool submit "build/$DMG_NAME" \
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
@@ -137,26 +164,22 @@ jobs:
             --wait \
             2>&1 | tee build/notarize-result.json
 
-          STATUS=$(python3 -c "import json,sys; print(json.load(open('build/notarize-result.json'))['status'])" 2>/dev/null || echo "unknown")
-          SUBMISSION_ID=$(python3 -c "import json,sys; print(json.load(open('build/notarize-result.json'))['id'])" 2>/dev/null || echo "")
+          STATUS=$(python3 -c "import json; print(json.load(open('build/notarize-result.json'))['status'])")
+          SUBMISSION_ID=$(python3 -c "import json; print(json.load(open('build/notarize-result.json'))['id'])")
 
           echo "Notarization status: $STATUS (submission: $SUBMISSION_ID)"
 
           if [ "$STATUS" != "Accepted" ]; then
-            echo "Notarization failed with status: $STATUS"
-            if [ -n "$SUBMISSION_ID" ]; then
-              echo "Fetching notarization log..."
-              xcrun notarytool log "$SUBMISSION_ID" \
-                --apple-id "$APPLE_ID" \
-                --password "$APPLE_ID_PASSWORD" \
-                --team-id "$APPLE_TEAM_ID" \
-                build/notarization-log.json || true
-              cat build/notarization-log.json 2>/dev/null || true
-            fi
+            echo "::error::Notarization failed with status: $STATUS"
+            xcrun notarytool log "$SUBMISSION_ID" \
+              --apple-id "$APPLE_ID" \
+              --password "$APPLE_ID_PASSWORD" \
+              --team-id "$APPLE_TEAM_ID" \
+              build/notarization-log.json || true
+            cat build/notarization-log.json 2>/dev/null || true
             exit 1
           fi
 
-          # Staple and verify
           xcrun stapler staple "build/$DMG_NAME"
           xcrun stapler validate "build/$DMG_NAME"
 
@@ -164,10 +187,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "v${BUILD_NUMBER}" \
-            "build/Pomdoro-${BUILD_NUMBER}.dmg" \
-            --title "Pomdoro Build ${BUILD_NUMBER}" \
-            --generate-notes
+          set -euo pipefail
+          if gh release view "v${BUILD_NUMBER}" &>/dev/null; then
+            echo "Release v${BUILD_NUMBER} already exists, uploading asset..."
+            gh release upload "v${BUILD_NUMBER}" "build/$DMG_NAME" --clobber
+          else
+            gh release create "v${BUILD_NUMBER}" \
+              "build/$DMG_NAME" \
+              --title "Pomdoro Build ${BUILD_NUMBER}" \
+              --generate-notes
+          fi
 
       - name: Upload logs on failure
         if: failure()
