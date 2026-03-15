@@ -25,6 +25,7 @@
 		57DEA2E8AA8C27637C43ED0B /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD6DDC1334A437038CCC1D /* SoundManager.swift */; };
 		5B712B5E79BCAFFCCB81F717 /* PomodoroManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB6B7ACE631704A33C2388 /* PomodoroManagerTests.swift */; };
 		65756EE65F8B8AB3DDB6ACA8 /* MockTimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87981026ED5EDD6ED18A6D5 /* MockTimeProvider.swift */; };
+		6740E40D3C6FC7290C1743E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3BBC9FF49A442DECAE90132 /* Assets.xcassets */; };
 		69148676B6BA30354F08AB7A /* PomodoroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */; };
 		69C99C54CE00DD56A8773892 /* MockSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */; };
 		6EBAE4E6A6B89C132504EA12 /* NotificationSending.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C806522CA337A352F004A0 /* NotificationSending.swift */; };
@@ -78,6 +79,7 @@
 		11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSettingsStore.swift; sourceTree = "<group>"; };
 		26FCC96D00F4B99A98118856 /* ChainLinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainLinkButton.swift; sourceTree = "<group>"; };
 		2C302A03143E577E5ED427C3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2ECAE908336AECD2325D5494 /* Pomdoro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pomdoro.entitlements; sourceTree = "<group>"; };
 		2F5002333C2D8773D565ED33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E64C42E1944192C30226B8B /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		48A4270E123F68B96363667D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		C25526E31FF890AEB1DBB0C2 /* SevenSegmentDigitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigitTests.swift; sourceTree = "<group>"; };
 		CEFC2C0C5676E76E05F26477 /* ModeArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeArrow.swift; sourceTree = "<group>"; };
 		D0E4AA3F69877E82926D317D /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
+		D3BBC9FF49A442DECAE90132 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E19F37F631CBB3789E57A8C3 /* Pomdoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomdoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87981026ED5EDD6ED18A6D5 /* MockTimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimeProvider.swift; sourceTree = "<group>"; };
 		E96542BF21D5202E2FA1D57D /* PomodoroManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroManager.swift; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 		56F91A825BFDA816BBB8FC0B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3BBC9FF49A442DECAE90132 /* Assets.xcassets */,
 				3E64C42E1944192C30226B8B /* CLAUDE.md */,
 				B646614F11E34FC34AB60BB8 /* completion-alarm.aiff */,
 				B36B07D8F9B6C61C38DA4574 /* transition-beep.aiff */,
@@ -162,6 +166,7 @@
 			children = (
 				2F5002333C2D8773D565ED33 /* AppDelegate.swift */,
 				017B500108FCFC22E3E71B2D /* CLAUDE.md */,
+				2ECAE908336AECD2325D5494 /* Pomdoro.entitlements */,
 				FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */,
 				5962DA1A76E3B53D11AB8DCF /* Models */,
 				BE8E99A792AACAD9E250367B /* Protocols */,
@@ -367,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6740E40D3C6FC7290C1743E3 /* Assets.xcassets in Resources */,
 				B3538F1388C7D7919702367C /* CLAUDE.md in Resources */,
 				4F25193F2987F9BFB48B423A /* CLAUDE.md in Resources */,
 				ABFC4F0C186120163ED3D018 /* CLAUDE.md in Resources */,
@@ -533,6 +539,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pomdoro/Pomdoro.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -581,6 +588,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pomdoro/Pomdoro.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

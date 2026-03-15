@@ -11,6 +11,7 @@ targets:
     settings:
       SWIFT_VERSION: "6.0"
       SWIFT_STRICT_CONCURRENCY: complete
+      CODE_SIGN_ENTITLEMENTS: Pomdoro/Pomdoro.entitlements
   PomdoroTests:
     type: bundle.unit-test
     platform: macOS
