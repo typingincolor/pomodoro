@@ -17,9 +17,7 @@
 		26ECC36B119C7567E428C54A /* TimerModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D4796D78118EED56EC0E5 /* TimerModelTests.swift */; };
 		40F72178BC1E9E85E2A75356 /* SoundPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061CF03E0411561BD208DB10 /* SoundPlaying.swift */; };
 		469A68DF467FE9F6D66823D3 /* SettingsStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */; };
-		4F25193F2987F9BFB48B423A /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 3E64C42E1944192C30226B8B /* CLAUDE.md */; };
 		50E87F4BC39703E7A6C18C3F /* SevenSegmentDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DA251BD0003031CD424060 /* SevenSegmentDisplay.swift */; };
-		52B6BBAD3B8C203A5E5AAB01 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 7E358F827F3D7CD70AD63202 /* CLAUDE.md */; };
 		55CECF340B831079FE218C51 /* TimerPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18D24D8862FF3D88532086 /* TimerPanelView.swift */; };
 		55DA8751ACA552101723D8A0 /* MockSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDFBAEC91E7BB5B692EBA7A /* MockSoundPlayer.swift */; };
 		57DEA2E8AA8C27637C43ED0B /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD6DDC1334A437038CCC1D /* SoundManager.swift */; };
@@ -32,23 +30,16 @@
 		7165600109A8C6F6B3D7B104 /* SevenSegmentDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */; };
 		9111BB7E9101DEAA31B2122A /* NotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */; };
 		A7032B12863B291F4448DA11 /* MockNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */; };
-		ABFC4F0C186120163ED3D018 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 5DEFEC65199723D93E21BF28 /* CLAUDE.md */; };
 		AFD649AF0B9D4024B3462823 /* ChainLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FCC96D00F4B99A98118856 /* ChainLinkButton.swift */; };
-		B3538F1388C7D7919702367C /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 017B500108FCFC22E3E71B2D /* CLAUDE.md */; };
-		B442093FA06FF3B75D395F6C /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 5236F4F6D99847549A4086C4 /* CLAUDE.md */; };
 		B5E7BED916054EF7A230A399 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C302A03143E577E5ED427C3 /* SettingsView.swift */; };
 		B6D1CCF46257A96BC221E44B /* SevenSegmentDigitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25526E31FF890AEB1DBB0C2 /* SevenSegmentDigitTests.swift */; };
 		B7B26FA4C4FF80AF56C7601C /* AppSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527E5CD146D070D803EA33D8 /* AppSettingsStore.swift */; };
 		C0B28A8163CE4EC5AA92608E /* SoundManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6503DD09BEACBEC000F5FD27 /* SoundManagerTests.swift */; };
 		CD2D568043A08C3EDAA294BC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A4270E123F68B96363667D /* NotificationManager.swift */; };
-		CE95E4C4C66878B4D8994EF4 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 597BABF5060A804AD1AC6190 /* CLAUDE.md */; };
-		D0C2AA767F106F549AB211F2 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = F0BAA277BDDA62F72948C442 /* CLAUDE.md */; };
-		D41B27E305EF36569505E7CF /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B29F3F0C73C1E65E6D19CCE /* CLAUDE.md */; };
 		D7E422972F2D1FE97B14DD6D /* PomdoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E639432B3B68DCA2EF70207 /* PomdoroUITests.swift */; };
 		EA33904E40B869BD33D3E1CF /* completion-alarm.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B646614F11E34FC34AB60BB8 /* completion-alarm.aiff */; };
 		F4BFD4F7BBDB8E825067C5C5 /* AppSettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B41306752A466DF441DA5 /* AppSettingsStoreTests.swift */; };
 		F86BF60BBAC7193DAE3F238D /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09417D69B7C0A0FBEC84A244 /* TimerModel.swift */; };
-		FB52591368F49FC56A502B15 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = D0E4AA3F69877E82926D317D /* CLAUDE.md */; };
 		FDA9209307A2E472E20DE9BE /* DigitInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A2C81ED921AB56B394D718 /* DigitInputTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +61,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		017B500108FCFC22E3E71B2D /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		061CF03E0411561BD208DB10 /* SoundPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlaying.swift; sourceTree = "<group>"; };
 		08DB6B7ACE631704A33C2388 /* PomodoroManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroManagerTests.swift; sourceTree = "<group>"; };
 		09417D69B7C0A0FBEC84A244 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
@@ -80,19 +70,13 @@
 		2C302A03143E577E5ED427C3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2ECAE908336AECD2325D5494 /* Pomdoro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pomdoro.entitlements; sourceTree = "<group>"; };
 		2F5002333C2D8773D565ED33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3E64C42E1944192C30226B8B /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		48A4270E123F68B96363667D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigit.swift; sourceTree = "<group>"; };
-		5236F4F6D99847549A4086C4 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		527E5CD146D070D803EA33D8 /* AppSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsStore.swift; sourceTree = "<group>"; };
-		597BABF5060A804AD1AC6190 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
-		5DEFEC65199723D93E21BF28 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		6503DD09BEACBEC000F5FD27 /* SoundManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerTests.swift; sourceTree = "<group>"; };
 		71A2C81ED921AB56B394D718 /* DigitInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitInputTests.swift; sourceTree = "<group>"; };
 		7588156C39CBA918541300F3 /* TimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProvider.swift; sourceTree = "<group>"; };
 		7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationSender.swift; sourceTree = "<group>"; };
-		7B29F3F0C73C1E65E6D19CCE /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
-		7E358F827F3D7CD70AD63202 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		7E639432B3B68DCA2EF70207 /* PomdoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroUITests.swift; sourceTree = "<group>"; };
 		7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerTests.swift; sourceTree = "<group>"; };
 		83A16E76FDD147F320F66020 /* TimerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControls.swift; sourceTree = "<group>"; };
@@ -108,14 +92,12 @@
 		B7128026E489297080A81DA6 /* MainTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTimerView.swift; sourceTree = "<group>"; };
 		C25526E31FF890AEB1DBB0C2 /* SevenSegmentDigitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigitTests.swift; sourceTree = "<group>"; };
 		CEFC2C0C5676E76E05F26477 /* ModeArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeArrow.swift; sourceTree = "<group>"; };
-		D0E4AA3F69877E82926D317D /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		D3BBC9FF49A442DECAE90132 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E19F37F631CBB3789E57A8C3 /* Pomdoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomdoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87981026ED5EDD6ED18A6D5 /* MockTimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimeProvider.swift; sourceTree = "<group>"; };
 		E96542BF21D5202E2FA1D57D /* PomodoroManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroManager.swift; sourceTree = "<group>"; };
 		EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoring.swift; sourceTree = "<group>"; };
 		EFBD6DDC1334A437038CCC1D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		F0BAA277BDDA62F72948C442 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				977B41306752A466DF441DA5 /* AppSettingsStoreTests.swift */,
-				597BABF5060A804AD1AC6190 /* CLAUDE.md */,
 				71A2C81ED921AB56B394D718 /* DigitInputTests.swift */,
 				7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */,
 				08DB6B7ACE631704A33C2388 /* PomodoroManagerTests.swift */,
@@ -140,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				527E5CD146D070D803EA33D8 /* AppSettingsStore.swift */,
-				7B29F3F0C73C1E65E6D19CCE /* CLAUDE.md */,
 				48A4270E123F68B96363667D /* NotificationManager.swift */,
 				EFBD6DDC1334A437038CCC1D /* SoundManager.swift */,
 			);
@@ -151,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				D3BBC9FF49A442DECAE90132 /* Assets.xcassets */,
-				3E64C42E1944192C30226B8B /* CLAUDE.md */,
 				B646614F11E34FC34AB60BB8 /* completion-alarm.aiff */,
 				B36B07D8F9B6C61C38DA4574 /* transition-beep.aiff */,
 			);
@@ -162,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				2F5002333C2D8773D565ED33 /* AppDelegate.swift */,
-				017B500108FCFC22E3E71B2D /* CLAUDE.md */,
 				2ECAE908336AECD2325D5494 /* Pomdoro.entitlements */,
 				FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */,
 				5962DA1A76E3B53D11AB8DCF /* Models */,
@@ -177,7 +155,6 @@
 		5962DA1A76E3B53D11AB8DCF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5DEFEC65199723D93E21BF28 /* CLAUDE.md */,
 				E96542BF21D5202E2FA1D57D /* PomodoroManager.swift */,
 				09417D69B7C0A0FBEC84A244 /* TimerModel.swift */,
 			);
@@ -187,7 +164,6 @@
 		8A282293CEE55DD14FE94308 /* PomdoroUITests */ = {
 			isa = PBXGroup;
 			children = (
-				D0E4AA3F69877E82926D317D /* CLAUDE.md */,
 				7E639432B3B68DCA2EF70207 /* PomdoroUITests.swift */,
 			);
 			path = PomdoroUITests;
@@ -196,7 +172,6 @@
 		BE8E99A792AACAD9E250367B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				7E358F827F3D7CD70AD63202 /* CLAUDE.md */,
 				A0C806522CA337A352F004A0 /* NotificationSending.swift */,
 				EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */,
 				061CF03E0411561BD208DB10 /* SoundPlaying.swift */,
@@ -209,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				26FCC96D00F4B99A98118856 /* ChainLinkButton.swift */,
-				5236F4F6D99847549A4086C4 /* CLAUDE.md */,
 				B7128026E489297080A81DA6 /* MainTimerView.swift */,
 				CEFC2C0C5676E76E05F26477 /* ModeArrow.swift */,
 				2C302A03143E577E5ED427C3 /* SettingsView.swift */,
@@ -244,7 +218,6 @@
 		F88AB05FE0D6BB4C834F7123 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				F0BAA277BDDA62F72948C442 /* CLAUDE.md */,
 				7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */,
 				11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */,
 				AEDFBAEC91E7BB5B692EBA7A /* MockSoundPlayer.swift */,
@@ -279,7 +252,6 @@
 			buildConfigurationList = AE9EBC912ACD7D136A99A3E0 /* Build configuration list for PBXNativeTarget "PomdoroUITests" */;
 			buildPhases = (
 				F4BE75CC208099C4CA48F1E7 /* Sources */,
-				B42A9ADDA27304CA9E06A091 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -298,7 +270,6 @@
 			buildConfigurationList = 6F77FE7B86CDDF4C8B1F51B6 /* Build configuration list for PBXNativeTarget "PomdoroTests" */;
 			buildPhases = (
 				534B75D6EC23241C61871123 /* Sources */,
-				884CF920E73CAD2181AE64B8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -348,34 +319,11 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		884CF920E73CAD2181AE64B8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE95E4C4C66878B4D8994EF4 /* CLAUDE.md in Resources */,
-				D0C2AA767F106F549AB211F2 /* CLAUDE.md in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B42A9ADDA27304CA9E06A091 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FB52591368F49FC56A502B15 /* CLAUDE.md in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CE022FD62328307F72457BA2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6740E40D3C6FC7290C1743E3 /* Assets.xcassets in Resources */,
-				B3538F1388C7D7919702367C /* CLAUDE.md in Resources */,
-				4F25193F2987F9BFB48B423A /* CLAUDE.md in Resources */,
-				ABFC4F0C186120163ED3D018 /* CLAUDE.md in Resources */,
-				B442093FA06FF3B75D395F6C /* CLAUDE.md in Resources */,
-				52B6BBAD3B8C203A5E5AAB01 /* CLAUDE.md in Resources */,
-				D41B27E305EF36569505E7CF /* CLAUDE.md in Resources */,
 				EA33904E40B869BD33D3E1CF /* completion-alarm.aiff in Resources */,
 				05069398425E47A2D5ACC5B5 /* transition-beep.aiff in Resources */,
 			);
@@ -503,7 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -520,6 +468,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -537,6 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pomdoro/Pomdoro.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -553,6 +503,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,6 +520,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -586,6 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pomdoro/Pomdoro.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -642,7 +595,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -658,6 +611,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

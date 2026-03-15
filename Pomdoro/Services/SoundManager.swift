@@ -1,6 +1,7 @@
 import AVFoundation
 import AppKit
 
+@MainActor
 final class SoundManager: SoundPlaying, @unchecked Sendable {
     private var transitionPlayer: AVAudioPlayer?
     private var alarmPlayer: AVAudioPlayer?

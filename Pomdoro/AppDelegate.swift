@@ -1,6 +1,7 @@
 import AppKit
 import SwiftUI
 
+@MainActor
 @Observable
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var panel: NSPanel?
