@@ -6,6 +6,11 @@ final class PomodoroManager {
     let timer1: TimerModel
     let timer2: TimerModel
     var isChained = false
+    private(set) var chainPhase: ChainPhase = .idle
+
+    enum ChainPhase: Equatable {
+        case idle, timer1Running, timer2Running, completed
+    }
 
     private let soundPlayer: SoundPlaying
     private let notificationSender: NotificationSending
@@ -39,8 +44,44 @@ final class PomodoroManager {
         }
     }
 
+    func playChained() {
+        guard isChained else { return }
+        chainPhase = .timer1Running
+        timer1.play()
+    }
+
     func tick() {
         timer1.tick()
         timer2.tick()
+        if isChained {
+            handleChainedTick()
+        } else {
+            handleUnchainedTick()
+        }
+    }
+
+    private func handleChainedTick() {
+        if chainPhase == .timer1Running && timer1.isCompleted {
+            chainPhase = .timer2Running
+            soundPlayer.playTransitionBeep()
+            notificationSender.send(title: "Timer 1 complete", body: "Timer 2 started")
+            timer2.play()
+        }
+        if chainPhase == .timer2Running && timer2.isCompleted {
+            chainPhase = .completed
+            soundPlayer.playCompletionAlarm()
+            notificationSender.send(title: "Timer complete!", body: "")
+        }
+    }
+
+    private func handleUnchainedTick() {
+        if timer1.isCompleted {
+            soundPlayer.playCompletionAlarm()
+            notificationSender.send(title: "Timer complete!", body: "Timer 1 finished")
+        }
+        if timer2.isCompleted {
+            soundPlayer.playCompletionAlarm()
+            notificationSender.send(title: "Timer complete!", body: "Timer 2 finished")
+        }
     }
 }
