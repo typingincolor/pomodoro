@@ -77,6 +77,22 @@ final class TimerModel {
         }
     }
 
+    func reset() {
+        isRunning = false
+        startDate = nil
+        elapsedAtPause = 0
+        hasNotifiedCompletion = false
+
+        switch mode {
+        case .countdown:
+            displayMinutes = targetSeconds / 60
+            displaySeconds = targetSeconds % 60
+        case .countUp:
+            displayMinutes = 0
+            displaySeconds = 0
+        }
+    }
+
     var isCompleted: Bool {
         mode == .countdown && displayMinutes == 0 && displaySeconds == 0 && hasNotifiedCompletion
     }

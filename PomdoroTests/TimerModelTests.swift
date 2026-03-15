@@ -60,4 +60,35 @@ final class TimerModelTests: XCTestCase {
         XCTAssertEqual(timer.displayMinutes, 8)
         XCTAssertEqual(timer.displaySeconds, 30)
     }
+
+    func testResetCountdown() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.setTime(minutes: 20, seconds: 0)
+        timer.mode = .countdown
+
+        timer.play()
+        timeProvider.advance(by: 300)
+        timer.tick()
+        timer.pause()
+        timer.reset()
+
+        XCTAssertFalse(timer.isRunning)
+        XCTAssertEqual(timer.displayMinutes, 20)
+        XCTAssertEqual(timer.displaySeconds, 0)
+    }
+
+    func testResetCountUp() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.mode = .countUp
+
+        timer.play()
+        timeProvider.advance(by: 125)
+        timer.tick()
+        timer.pause()
+        timer.reset()
+
+        XCTAssertFalse(timer.isRunning)
+        XCTAssertEqual(timer.displayMinutes, 0)
+        XCTAssertEqual(timer.displaySeconds, 0)
+    }
 }
