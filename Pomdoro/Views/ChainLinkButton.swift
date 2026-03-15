@@ -8,8 +8,9 @@ struct ChainLinkButton: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: 6 * scale) {
-                Image(systemName: isChained ? "link" : "link.slash")
+                Image(systemName: "link")
                     .font(.system(size: 14 * scale, weight: .medium))
+                    .strikethrough(!isChained, color: Color(white: 0.6))
                 Text(isChained ? "Linked" : "Unlinked")
                     .font(.system(size: 11 * scale, weight: .medium))
             }
