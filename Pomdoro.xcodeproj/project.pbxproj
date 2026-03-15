@@ -12,6 +12,7 @@
 		0EE8EB8AD2126BFB2994A863 /* ModeArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC2C0C5676E76E05F26477 /* ModeArrow.swift */; };
 		1E1FB310188F1A9301D24A06 /* TimerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A16E76FDD147F320F66020 /* TimerControls.swift */; };
 		21C38F32A4666C002126C625 /* PomodoroManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96542BF21D5202E2FA1D57D /* PomodoroManager.swift */; };
+		25FB653C955C17707C145B2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5002333C2D8773D565ED33 /* AppDelegate.swift */; };
 		26ECC36B119C7567E428C54A /* TimerModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D4796D78118EED56EC0E5 /* TimerModelTests.swift */; };
 		40F72178BC1E9E85E2A75356 /* SoundPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061CF03E0411561BD208DB10 /* SoundPlaying.swift */; };
 		469A68DF467FE9F6D66823D3 /* SettingsStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */; };
@@ -70,6 +71,7 @@
 		11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSettingsStore.swift; sourceTree = "<group>"; };
 		26FCC96D00F4B99A98118856 /* ChainLinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainLinkButton.swift; sourceTree = "<group>"; };
 		2C302A03143E577E5ED427C3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2F5002333C2D8773D565ED33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CA19A4BEDC4B670511DEC98 /* PomdoroUIPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroUIPlaceholderTests.swift; sourceTree = "<group>"; };
 		48A4270E123F68B96363667D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigit.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		58539555D374D83B3660ECAF /* Pomdoro */ = {
 			isa = PBXGroup;
 			children = (
+				2F5002333C2D8773D565ED33 /* AppDelegate.swift */,
 				017B500108FCFC22E3E71B2D /* CLAUDE.md */,
 				FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */,
 				5962DA1A76E3B53D11AB8DCF /* Models */,
@@ -365,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25FB653C955C17707C145B2D /* AppDelegate.swift in Sources */,
 				B7B26FA4C4FF80AF56C7601C /* AppSettingsStore.swift in Sources */,
 				AFD649AF0B9D4024B3462823 /* ChainLinkButton.swift in Sources */,
 				02B75640143493674AB368DE /* MainTimerView.swift in Sources */,
