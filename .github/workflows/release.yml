@@ -105,16 +105,11 @@ jobs:
             -exportOptionsPlist export-options.plist \
             -exportPath build/export
 
-      - name: Create DMG and notarize
-        timeout-minutes: 30
-        env:
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      - name: Create DMG
         run: |
           DMG_NAME="Pomdoro-${BUILD_NUMBER}.dmg"
+          echo "DMG_NAME=$DMG_NAME" >> "$GITHUB_ENV"
 
-          # Build DMG from the signed app
           mkdir -p build/dmg
           cp -R build/export/Pomdoro.app build/dmg/
           ln -s /Applications build/dmg/Applications
@@ -124,30 +119,46 @@ jobs:
             -ov -format UDZO \
             "build/$DMG_NAME"
 
-          # Notarize the DMG (contains the signed app)
-          SUBMISSION_OUT=$(xcrun notarytool submit "build/$DMG_NAME" \
+      - name: Notarize DMG
+        timeout-minutes: 30
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          set -euo pipefail
+
+          # Submit and capture the JSON output for reliable ID parsing
+          xcrun notarytool submit "build/$DMG_NAME" \
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
-            --timeout 20m \
-            --wait 2>&1) || true
+            --output-format json \
+            --wait \
+            2>&1 | tee build/notarize-result.json
 
-          echo "$SUBMISSION_OUT"
-          SUBMISSION_ID=$(echo "$SUBMISSION_OUT" | grep "id:" | head -1 | awk '{print $2}')
+          STATUS=$(python3 -c "import json,sys; print(json.load(open('build/notarize-result.json'))['status'])" 2>/dev/null || echo "unknown")
+          SUBMISSION_ID=$(python3 -c "import json,sys; print(json.load(open('build/notarize-result.json'))['id'])" 2>/dev/null || echo "")
 
-          if echo "$SUBMISSION_OUT" | grep -q "status: Invalid"; then
-            echo "Notarization failed. Fetching log..."
-            xcrun notarytool log "$SUBMISSION_ID" \
-              --apple-id "$APPLE_ID" \
-              --password "$APPLE_ID_PASSWORD" \
-              --team-id "$APPLE_TEAM_ID" \
-              build/notarization-log.json
-            cat build/notarization-log.json
+          echo "Notarization status: $STATUS (submission: $SUBMISSION_ID)"
+
+          if [ "$STATUS" != "Accepted" ]; then
+            echo "Notarization failed with status: $STATUS"
+            if [ -n "$SUBMISSION_ID" ]; then
+              echo "Fetching notarization log..."
+              xcrun notarytool log "$SUBMISSION_ID" \
+                --apple-id "$APPLE_ID" \
+                --password "$APPLE_ID_PASSWORD" \
+                --team-id "$APPLE_TEAM_ID" \
+                build/notarization-log.json || true
+              cat build/notarization-log.json 2>/dev/null || true
+            fi
             exit 1
           fi
 
-          # Staple the ticket to the DMG
+          # Staple and verify
           xcrun stapler staple "build/$DMG_NAME"
+          xcrun stapler validate "build/$DMG_NAME"
 
       - name: Create GitHub Release
         env:
@@ -165,6 +176,7 @@ jobs:
           name: release-logs
           path: |
             build.log
+            build/notarize-result.json
             build/notarization-log.json
 
       - name: Cleanup keychain
