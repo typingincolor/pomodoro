@@ -114,11 +114,25 @@ jobs:
 
           ditto -c -k --keepParent "$APP_PATH" build/Pomdoro.zip
 
-          xcrun notarytool submit build/Pomdoro.zip \
+          SUBMISSION_OUT=$(xcrun notarytool submit build/Pomdoro.zip \
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
-            --wait
+            --wait 2>&1) || true
+
+          echo "$SUBMISSION_OUT"
+          SUBMISSION_ID=$(echo "$SUBMISSION_OUT" | grep "id:" | head -1 | awk '{print $2}')
+
+          if echo "$SUBMISSION_OUT" | grep -q "status: Invalid"; then
+            echo "Notarization failed. Fetching log..."
+            xcrun notarytool log "$SUBMISSION_ID" \
+              --apple-id "$APPLE_ID" \
+              --password "$APPLE_ID_PASSWORD" \
+              --team-id "$APPLE_TEAM_ID" \
+              build/notarization-log.json
+            cat build/notarization-log.json
+            exit 1
+          fi
 
           xcrun stapler staple "$APP_PATH"
 
@@ -161,7 +175,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: release-logs
-          path: build.log
+          path: |
+            build.log
+            build/notarization-log.json
 
       - name: Cleanup keychain
         if: always()
