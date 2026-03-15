@@ -110,4 +110,17 @@ final class PomodoroManagerTests: XCTestCase {
         XCTAssertEqual(manager.timer2.displayMinutes, 3)
         XCTAssertEqual(manager.chainPhase, .idle)
     }
+
+    func testStandaloneCompletionTriggersAlarm() {
+        manager.timer1.setTime(minutes: 0, seconds: 3)
+        manager.timer1.mode = .countdown
+        manager.playTimer1()
+        timeProvider.advance(by: 3)
+        manager.tick()
+        XCTAssertEqual(soundPlayer.completionAlarmCount, 1)
+        XCTAssertEqual(notificationSender.sentNotifications.count, 1)
+        timeProvider.advance(by: 1)
+        manager.tick()
+        XCTAssertEqual(soundPlayer.completionAlarmCount, 1)
+    }
 }
