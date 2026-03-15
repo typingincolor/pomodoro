@@ -8,6 +8,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private(set) var isPanelOpen = false
     private var lastPanelFrame: NSRect?
 
+    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
+        return true
+    }
+
     func openPanel(manager: PomodoroManager, settings: AppSettingsStore) {
         guard panel == nil else {
             bringPanelToFront()
