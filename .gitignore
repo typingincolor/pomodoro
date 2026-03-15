@@ -1,1 +1,10 @@
 .superpowers/
+
+# Xcode user data
+*.xcuserstate
+xcuserdata/
+*.xcuserdatad
+
+# Build products
+build/
+DerivedData/
