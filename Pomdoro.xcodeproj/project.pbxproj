@@ -31,7 +31,6 @@
 		6EBAE4E6A6B89C132504EA12 /* NotificationSending.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C806522CA337A352F004A0 /* NotificationSending.swift */; };
 		7165600109A8C6F6B3D7B104 /* SevenSegmentDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */; };
 		9111BB7E9101DEAA31B2122A /* NotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */; };
-		9E3D0E6ECD422982722C688B /* PomdoroPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A11DEF9BA6D02E1FDD31AE /* PomdoroPlaceholderTests.swift */; };
 		A7032B12863B291F4448DA11 /* MockNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */; };
 		ABFC4F0C186120163ED3D018 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 5DEFEC65199723D93E21BF28 /* CLAUDE.md */; };
 		AFD649AF0B9D4024B3462823 /* ChainLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FCC96D00F4B99A98118856 /* ChainLinkButton.swift */; };
@@ -86,7 +85,6 @@
 		4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigit.swift; sourceTree = "<group>"; };
 		5236F4F6D99847549A4086C4 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		527E5CD146D070D803EA33D8 /* AppSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsStore.swift; sourceTree = "<group>"; };
-		52A11DEF9BA6D02E1FDD31AE /* PomdoroPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroPlaceholderTests.swift; sourceTree = "<group>"; };
 		597BABF5060A804AD1AC6190 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		5DEFEC65199723D93E21BF28 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		6503DD09BEACBEC000F5FD27 /* SoundManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManagerTests.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				597BABF5060A804AD1AC6190 /* CLAUDE.md */,
 				71A2C81ED921AB56B394D718 /* DigitInputTests.swift */,
 				7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */,
-				52A11DEF9BA6D02E1FDD31AE /* PomdoroPlaceholderTests.swift */,
 				08DB6B7ACE631704A33C2388 /* PomodoroManagerTests.swift */,
 				C25526E31FF890AEB1DBB0C2 /* SevenSegmentDigitTests.swift */,
 				6503DD09BEACBEC000F5FD27 /* SoundManagerTests.swift */,
@@ -398,7 +395,6 @@
 				55DA8751ACA552101723D8A0 /* MockSoundPlayer.swift in Sources */,
 				65756EE65F8B8AB3DDB6ACA8 /* MockTimeProvider.swift in Sources */,
 				9111BB7E9101DEAA31B2122A /* NotificationManagerTests.swift in Sources */,
-				9E3D0E6ECD422982722C688B /* PomdoroPlaceholderTests.swift in Sources */,
 				5B712B5E79BCAFFCCB81F717 /* PomodoroManagerTests.swift in Sources */,
 				B6D1CCF46257A96BC221E44B /* SevenSegmentDigitTests.swift in Sources */,
 				C0B28A8163CE4EC5AA92608E /* SoundManagerTests.swift in Sources */,
