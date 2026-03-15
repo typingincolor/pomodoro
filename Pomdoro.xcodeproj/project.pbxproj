@@ -10,11 +10,18 @@
 		090DF8A3D78D26D49AC5ED30 /* TimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7588156C39CBA918541300F3 /* TimeProvider.swift */; };
 		40F72178BC1E9E85E2A75356 /* SoundPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061CF03E0411561BD208DB10 /* SoundPlaying.swift */; };
 		469A68DF467FE9F6D66823D3 /* SettingsStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */; };
+		52B6BBAD3B8C203A5E5AAB01 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 7E358F827F3D7CD70AD63202 /* CLAUDE.md */; };
+		55DA8751ACA552101723D8A0 /* MockSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDFBAEC91E7BB5B692EBA7A /* MockSoundPlayer.swift */; };
+		65756EE65F8B8AB3DDB6ACA8 /* MockTimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87981026ED5EDD6ED18A6D5 /* MockTimeProvider.swift */; };
 		69148676B6BA30354F08AB7A /* PomodoroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */; };
+		69C99C54CE00DD56A8773892 /* MockSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */; };
 		6EBAE4E6A6B89C132504EA12 /* NotificationSending.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C806522CA337A352F004A0 /* NotificationSending.swift */; };
 		81DC72508469D51EEEA1E21B /* PomdoroUIPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA19A4BEDC4B670511DEC98 /* PomdoroUIPlaceholderTests.swift */; };
 		9E3D0E6ECD422982722C688B /* PomdoroPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A11DEF9BA6D02E1FDD31AE /* PomdoroPlaceholderTests.swift */; };
+		A7032B12863B291F4448DA11 /* MockNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */; };
+		B3538F1388C7D7919702367C /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 017B500108FCFC22E3E71B2D /* CLAUDE.md */; };
 		CE95E4C4C66878B4D8994EF4 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 597BABF5060A804AD1AC6190 /* CLAUDE.md */; };
+		FB52591368F49FC56A502B15 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = D0E4AA3F69877E82926D317D /* CLAUDE.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,15 +42,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		017B500108FCFC22E3E71B2D /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		061CF03E0411561BD208DB10 /* SoundPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlaying.swift; sourceTree = "<group>"; };
+		11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSettingsStore.swift; sourceTree = "<group>"; };
 		3CA19A4BEDC4B670511DEC98 /* PomdoroUIPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroUIPlaceholderTests.swift; sourceTree = "<group>"; };
 		52A11DEF9BA6D02E1FDD31AE /* PomdoroPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroPlaceholderTests.swift; sourceTree = "<group>"; };
 		597BABF5060A804AD1AC6190 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		7588156C39CBA918541300F3 /* TimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProvider.swift; sourceTree = "<group>"; };
+		7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationSender.swift; sourceTree = "<group>"; };
+		7E358F827F3D7CD70AD63202 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		A0C806522CA337A352F004A0 /* NotificationSending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSending.swift; sourceTree = "<group>"; };
 		A77AB310B486084751550415 /* PomdoroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomdoroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB46EE64EF249CDC93CBDE8 /* PomdoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomdoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEDFBAEC91E7BB5B692EBA7A /* MockSoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSoundPlayer.swift; sourceTree = "<group>"; };
+		D0E4AA3F69877E82926D317D /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		E19F37F631CBB3789E57A8C3 /* Pomdoro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomdoro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E87981026ED5EDD6ED18A6D5 /* MockTimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimeProvider.swift; sourceTree = "<group>"; };
 		EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStoring.swift; sourceTree = "<group>"; };
 		FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,6 +68,7 @@
 			children = (
 				597BABF5060A804AD1AC6190 /* CLAUDE.md */,
 				52A11DEF9BA6D02E1FDD31AE /* PomdoroPlaceholderTests.swift */,
+				F88AB05FE0D6BB4C834F7123 /* Mocks */,
 			);
 			path = PomdoroTests;
 			sourceTree = "<group>";
@@ -61,6 +76,7 @@
 		58539555D374D83B3660ECAF /* Pomdoro */ = {
 			isa = PBXGroup;
 			children = (
+				017B500108FCFC22E3E71B2D /* CLAUDE.md */,
 				FDB0ECCB40B4398D29AA43E3 /* PomodoroApp.swift */,
 				BE8E99A792AACAD9E250367B /* Protocols */,
 			);
@@ -70,6 +86,7 @@
 		8A282293CEE55DD14FE94308 /* PomdoroUITests */ = {
 			isa = PBXGroup;
 			children = (
+				D0E4AA3F69877E82926D317D /* CLAUDE.md */,
 				3CA19A4BEDC4B670511DEC98 /* PomdoroUIPlaceholderTests.swift */,
 			);
 			path = PomdoroUITests;
@@ -78,6 +95,7 @@
 		BE8E99A792AACAD9E250367B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				7E358F827F3D7CD70AD63202 /* CLAUDE.md */,
 				A0C806522CA337A352F004A0 /* NotificationSending.swift */,
 				EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */,
 				061CF03E0411561BD208DB10 /* SoundPlaying.swift */,
@@ -106,6 +124,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F88AB05FE0D6BB4C834F7123 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */,
+				11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */,
+				AEDFBAEC91E7BB5B692EBA7A /* MockSoundPlayer.swift */,
+				E87981026ED5EDD6ED18A6D5 /* MockTimeProvider.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,6 +143,7 @@
 			buildConfigurationList = 8A196BD60E6D57273366C385 /* Build configuration list for PBXNativeTarget "Pomdoro" */;
 			buildPhases = (
 				C6123DF629669A6E8C1702D4 /* Sources */,
+				CE022FD62328307F72457BA2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +161,7 @@
 			buildConfigurationList = AE9EBC912ACD7D136A99A3E0 /* Build configuration list for PBXNativeTarget "PomdoroUITests" */;
 			buildPhases = (
 				F4BE75CC208099C4CA48F1E7 /* Sources */,
+				B42A9ADDA27304CA9E06A091 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -207,6 +238,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B42A9ADDA27304CA9E06A091 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB52591368F49FC56A502B15 /* CLAUDE.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE022FD62328307F72457BA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3538F1388C7D7919702367C /* CLAUDE.md in Resources */,
+				52B6BBAD3B8C203A5E5AAB01 /* CLAUDE.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -214,6 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7032B12863B291F4448DA11 /* MockNotificationSender.swift in Sources */,
+				69C99C54CE00DD56A8773892 /* MockSettingsStore.swift in Sources */,
+				55DA8751ACA552101723D8A0 /* MockSoundPlayer.swift in Sources */,
+				65756EE65F8B8AB3DDB6ACA8 /* MockTimeProvider.swift in Sources */,
 				9E3D0E6ECD422982722C688B /* PomdoroPlaceholderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
