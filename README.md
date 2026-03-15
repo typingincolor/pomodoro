@@ -1,8 +1,8 @@
-# Pomdoro
+# Pomodoro
 
 A minimal Pomodoro timer that lives in your macOS menu bar.
 
-![Pomdoro](docs/screenshot.png)
+![Pomodoro](docs/screenshot.png)
 
 ## Features
 
@@ -19,19 +19,19 @@ A minimal Pomodoro timer that lives in your macOS menu bar.
 ### Homebrew
 
 ```
-brew install typingincolor/tap/pomdoro
+brew install typingincolor/tap/pomodoro
 ```
 
 ### Manual
 
-Download the latest `.dmg` from [Releases](https://github.com/typingincolor/pomdoro/releases), open it, and drag Pomdoro to Applications.
+Download the latest `.dmg` from [Releases](https://github.com/typingincolor/pomodoro/releases), open it, and drag Pomodoro to Applications.
 
 ## Build from source
 
 ```
-git clone https://github.com/typingincolor/pomdoro.git
-cd pomdoro
-xcodebuild -scheme Pomdoro -configuration Release build
+git clone https://github.com/typingincolor/pomodoro.git
+cd pomodoro
+xcodebuild -scheme Pomodoro -configuration Release build
 ```
 
 Requires Xcode 15+ and macOS 14+.

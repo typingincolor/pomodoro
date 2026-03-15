@@ -22,6 +22,6 @@ image.unlockFocus()
 let tiffData = image.tiffRepresentation!
 let bitmap = NSBitmapImageRep(data: tiffData)!
 let pngData = bitmap.representation(using: .png, properties: [:])!
-let outputURL = URL(fileURLWithPath: "Pomdoro/Resources/Assets.xcassets/AppIcon.appiconset/icon_1024.png")
+let outputURL = URL(fileURLWithPath: "Pomodoro/Resources/Assets.xcassets/AppIcon.appiconset/icon_1024.png")
 try! pngData.write(to: outputURL)
 print("Icon saved to \(outputURL.path)")
