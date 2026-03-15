@@ -196,6 +196,43 @@ jobs:
               --generate-notes
           fi
 
+      - name: Update Homebrew tap
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          DMG_URL="https://github.com/typingincolor/pomdoro/releases/download/v${BUILD_NUMBER}/${DMG_NAME}"
+          SHA256=$(shasum -a 256 "build/$DMG_NAME" | awk '{print $1}')
+
+          cat > /tmp/pomdoro.rb << CASK
+          cask "pomdoro" do
+            version "${BUILD_NUMBER}"
+            sha256 "${SHA256}"
+
+            url "${DMG_URL}"
+            name "Pomdoro"
+            desc "macOS menu bar pomodoro timer with dual seven-segment LCD displays"
+            homepage "https://github.com/typingincolor/pomdoro"
+
+            app "Pomdoro.app"
+
+            zap trash: [
+              "~/Library/Preferences/com.pomdoro.Pomdoro.plist",
+            ]
+          end
+          CASK
+
+          gh api repos/typingincolor/homebrew-tap/contents/Casks/pomdoro.rb \
+            --method PUT \
+            --field message="Update pomdoro to build ${BUILD_NUMBER}" \
+            --field content="$(base64 -i /tmp/pomdoro.rb)" \
+            --field sha="$(gh api repos/typingincolor/homebrew-tap/contents/Casks/pomdoro.rb --jq '.sha' 2>/dev/null || echo '')" \
+            || \
+          gh api repos/typingincolor/homebrew-tap/contents/Casks/pomdoro.rb \
+            --method PUT \
+            --field message="Add pomdoro cask build ${BUILD_NUMBER}" \
+            --field content="$(base64 -i /tmp/pomdoro.rb)"
+
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
