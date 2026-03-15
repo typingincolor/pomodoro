@@ -4,11 +4,13 @@ struct TimerControls: View {
     let isRunning: Bool
     let isCompleted: Bool
     let isPaused: Bool
+    let isAlarmPlaying: Bool
     let scale: CGFloat
     let label: String
     let onPlay: () -> Void
     let onPause: () -> Void
     let onReset: () -> Void
+    let onStopAlarm: () -> Void
 
     private let buttonSize: CGFloat = 40
 
@@ -49,6 +51,25 @@ struct TimerControls: View {
             .frame(width: buttonSize * scale, height: buttonSize * scale)
             .disabled(isRunning && !isCompleted && !isPaused)
             .opacity((isPaused || isCompleted || !isRunning) ? 1.0 : 0.3)
+
+            // Silence alarm button — only visible when alarm is playing
+            if isAlarmPlaying {
+                Button(action: onStopAlarm) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8 * scale)
+                            .fill(amberBackground)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8 * scale)
+                                    .stroke(amberBorder, lineWidth: 1.5)
+                            )
+                        Image(systemName: "speaker.slash.fill")
+                            .font(.system(size: 14 * scale))
+                            .foregroundColor(.orange)
+                    }
+                }
+                .buttonStyle(.plain)
+                .frame(width: buttonSize * scale, height: buttonSize * scale)
+            }
         }
     }
 

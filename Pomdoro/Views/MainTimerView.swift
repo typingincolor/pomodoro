@@ -14,7 +14,7 @@ struct MainTimerView: View {
     @State private var editingPendingDigit: Int?
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
                 TimerPanelView(
                     timer: manager.timer1,
                     label: "T1",
@@ -22,6 +22,7 @@ struct MainTimerView: View {
                     scale: scale,
                     isFocused: focusedTimer == 1,
                     showControls: true,
+                    isAlarmPlaying: manager.isAlarmPlaying,
                     onPlay: { manager.isChained ? manager.playChained() : manager.playTimer1() },
                     onPause: { manager.isChained ? manager.pauseChained() : manager.pauseTimer1() },
                     onReset: { manager.isChained ? manager.resetChained() : manager.resetTimer1() },
@@ -29,6 +30,7 @@ struct MainTimerView: View {
                         guard !manager.isChained else { return }
                         manager.timer1.mode = manager.timer1.mode == .countdown ? .countUp : .countdown
                     },
+                    onStopAlarm: { manager.stopAlarm() },
                     selectedField: focusedTimer == 1 ? $editingTimerField : .constant(nil),
                     pendingDigit: focusedTimer == 1 ? $editingPendingDigit : .constant(nil)
                 )
@@ -47,6 +49,7 @@ struct MainTimerView: View {
                     scale: scale,
                     isFocused: focusedTimer == 2,
                     showControls: !manager.isChained,
+                    isAlarmPlaying: manager.isAlarmPlaying,
                     onPlay: { manager.playTimer2() },
                     onPause: { manager.pauseTimer2() },
                     onReset: { manager.resetTimer2() },
@@ -54,6 +57,7 @@ struct MainTimerView: View {
                         guard !manager.isChained else { return }
                         manager.timer2.mode = manager.timer2.mode == .countdown ? .countUp : .countdown
                     },
+                    onStopAlarm: { manager.stopAlarm() },
                     selectedField: focusedTimer == 2 ? $editingTimerField : .constant(nil),
                     pendingDigit: focusedTimer == 2 ? $editingPendingDigit : .constant(nil)
                 )

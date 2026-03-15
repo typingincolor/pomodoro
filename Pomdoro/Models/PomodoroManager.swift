@@ -12,6 +12,7 @@ final class PomodoroManager {
         case idle, timer1Running, timer2Running, completed
     }
 
+    private(set) var isAlarmPlaying = false
     private let soundPlayer: SoundPlaying
     private let notificationSender: NotificationSending
     let settings: any SettingsStoring
@@ -37,14 +38,21 @@ final class PomodoroManager {
     func pauseTimer1() { timer1.pause() }
     func pauseTimer2() { timer2.pause() }
 
+    func stopAlarm() {
+        soundPlayer.stopAlarm()
+        isAlarmPlaying = false
+    }
+
     func resetTimer1() {
         timer1.reset()
         hasHandledTimer1Completion = false
+        stopAlarm()
     }
 
     func resetTimer2() {
         timer2.reset()
         hasHandledTimer2Completion = false
+        stopAlarm()
     }
 
     func toggleChain() {
@@ -90,6 +98,7 @@ final class PomodoroManager {
         hasHandledTimer1Completion = false
         hasHandledTimer2Completion = false
         chainPhase = .idle
+        stopAlarm()
     }
 
     func tick() {
@@ -114,6 +123,7 @@ final class PomodoroManager {
             hasHandledTimer2Completion = true
             chainPhase = .completed
             soundPlayer.playCompletionAlarm()
+            isAlarmPlaying = true
             notificationSender.send(title: "Timer complete!", body: "")
         }
     }
@@ -122,11 +132,13 @@ final class PomodoroManager {
         if timer1.hasNotifiedCompletion && !hasHandledTimer1Completion {
             hasHandledTimer1Completion = true
             soundPlayer.playCompletionAlarm()
+            isAlarmPlaying = true
             notificationSender.send(title: "Timer complete!", body: "Timer 1 finished")
         }
         if timer2.hasNotifiedCompletion && !hasHandledTimer2Completion {
             hasHandledTimer2Completion = true
             soundPlayer.playCompletionAlarm()
+            isAlarmPlaying = true
             notificationSender.send(title: "Timer complete!", body: "Timer 2 finished")
         }
     }

@@ -7,10 +7,12 @@ struct TimerPanelView: View {
     let scale: CGFloat
     let isFocused: Bool
     let showControls: Bool
+    let isAlarmPlaying: Bool
     let onPlay: () -> Void
     let onPause: () -> Void
     let onReset: () -> Void
     let onToggleMode: () -> Void
+    let onStopAlarm: () -> Void
 
     @Binding var selectedField: TimerField?
     @Binding var pendingDigit: Int?
@@ -83,11 +85,13 @@ struct TimerPanelView: View {
                     isRunning: timer.isRunning,
                     isCompleted: timer.isCompleted,
                     isPaused: !timer.isRunning && timer.displayMinutes + timer.displaySeconds > 0,
+                    isAlarmPlaying: isAlarmPlaying,
                     scale: scale,
                     label: label,
                     onPlay: onPlay,
                     onPause: onPause,
-                    onReset: onReset
+                    onReset: onReset,
+                    onStopAlarm: onStopAlarm
                 )
             }
         }

@@ -9,17 +9,16 @@ struct ChainLinkButton: View {
         Button(action: action) {
             Image(systemName: isChained ? "link" : "link.slash")
                 .font(.system(size: 14 * scale))
-                .foregroundColor(isChained ? .orange : Color.gray.opacity(0.5))
+                .foregroundColor(isChained ? .orange : Color(white: 0.45))
                 .frame(width: 32 * scale, height: 32 * scale)
                 .background(
                     RoundedRectangle(cornerRadius: 6 * scale)
-                        .fill(Color(white: 0.07))
+                        .fill(Color(white: 0.09))
                         .overlay(
                             RoundedRectangle(cornerRadius: 6 * scale)
-                                .stroke(Color(white: 0.1), lineWidth: 1)
+                                .stroke(Color(white: 0.15), lineWidth: 1)
                         )
                 )
-                .opacity(isChained ? 1.0 : 0.5)
         }
         .buttonStyle(.plain)
         .accessibilityIdentifier("chainLinkButton")
