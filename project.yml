@@ -1,0 +1,40 @@
+name: Pomdoro
+options:
+  bundleIdPrefix: com.pomdoro
+  deploymentTarget:
+    macOS: "14.0"
+targets:
+  Pomdoro:
+    type: application
+    platform: macOS
+    settings:
+      SWIFT_VERSION: "6.0"
+      SWIFT_STRICT_CONCURRENCY: complete
+      CODE_SIGN_ENTITLEMENTS: Pomdoro/Pomdoro.entitlements
+      GENERATE_INFOPLIST_FILE: YES
+    sources:
+      - path: Pomdoro
+        excludes:
+          - "**/*.md"
+  PomdoroTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: PomdoroTests
+        excludes:
+          - "**/*.md"
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Pomdoro
+  PomdoroUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources:
+      - path: PomdoroUITests
+        excludes:
+          - "**/*.md"
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: Pomdoro
