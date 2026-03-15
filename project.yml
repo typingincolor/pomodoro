@@ -1,0 +1,25 @@
+name: Pomdoro
+options:
+  bundleIdPrefix: com.pomdoro
+  deploymentTarget:
+    macOS: "13.0"
+targets:
+  Pomdoro:
+    type: application
+    platform: macOS
+    sources: [Pomdoro]
+    settings:
+      SWIFT_VERSION: "6.0"
+      SWIFT_STRICT_CONCURRENCY: complete
+  PomdoroTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [PomdoroTests]
+    dependencies:
+      - target: Pomdoro
+  PomdoroUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources: [PomdoroUITests]
+    dependencies:
+      - target: Pomdoro
