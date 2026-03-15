@@ -91,4 +91,73 @@ final class TimerModelTests: XCTestCase {
         XCTAssertEqual(timer.displayMinutes, 0)
         XCTAssertEqual(timer.displaySeconds, 0)
     }
+
+    func testTimeClampingMinutes() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.setTime(minutes: 150, seconds: 0)
+        XCTAssertEqual(timer.displayMinutes, 99)
+        XCTAssertEqual(timer.displaySeconds, 0)
+    }
+
+    func testTimeClampingSeconds() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.setTime(minutes: 5, seconds: 75)
+        XCTAssertEqual(timer.displayMinutes, 5)
+        XCTAssertEqual(timer.displaySeconds, 59)
+    }
+
+    func testTimeClampingNegative() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.setTime(minutes: -5, seconds: -10)
+        XCTAssertEqual(timer.displayMinutes, 0)
+        XCTAssertEqual(timer.displaySeconds, 0)
+    }
+
+    func testCountdownAtZeroDoesNotStart() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.setTime(minutes: 0, seconds: 0)
+        timer.mode = .countdown
+
+        timer.play()
+        XCTAssertFalse(timer.isRunning)
+        XCTAssertFalse(timer.isCompleted)
+    }
+
+    func testCountdownCompletionFlag() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.setTime(minutes: 0, seconds: 5)
+        timer.mode = .countdown
+
+        timer.play()
+        timeProvider.advance(by: 5)
+        timer.tick()
+
+        XCTAssertTrue(timer.isCompleted)
+        XCTAssertEqual(timer.displayMinutes, 0)
+        XCTAssertEqual(timer.displaySeconds, 0)
+    }
+
+    func testCountUpClampsAt99Minutes59Seconds() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.mode = .countUp
+
+        timer.play()
+        timeProvider.advance(by: 6000) // 100 minutes
+        timer.tick()
+
+        XCTAssertEqual(timer.displayMinutes, 99)
+        XCTAssertEqual(timer.displaySeconds, 59)
+    }
+
+    func testCountUpStaysClampedBeyond99Minutes59Seconds() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.mode = .countUp
+
+        timer.play()
+        timeProvider.advance(by: 7200) // 120 minutes
+        timer.tick()
+
+        XCTAssertEqual(timer.displayMinutes, 99)
+        XCTAssertEqual(timer.displaySeconds, 59)
+    }
 }
