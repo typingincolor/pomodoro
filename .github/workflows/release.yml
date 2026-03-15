@@ -105,18 +105,27 @@ jobs:
             -exportOptionsPlist export-options.plist \
             -exportPath build/export
 
-      - name: Notarize app
+      - name: Create DMG and notarize
         timeout-minutes: 30
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: |
-          APP_PATH="build/export/Pomdoro.app"
+          DMG_NAME="Pomdoro-${BUILD_NUMBER}.dmg"
 
-          ditto -c -k --keepParent "$APP_PATH" build/Pomdoro.zip
+          # Build DMG from the signed app
+          mkdir -p build/dmg
+          cp -R build/export/Pomdoro.app build/dmg/
+          ln -s /Applications build/dmg/Applications
 
-          SUBMISSION_OUT=$(xcrun notarytool submit build/Pomdoro.zip \
+          hdiutil create -volname "Pomdoro" \
+            -srcfolder build/dmg \
+            -ov -format UDZO \
+            "build/$DMG_NAME"
+
+          # Notarize the DMG (contains the signed app)
+          SUBMISSION_OUT=$(xcrun notarytool submit "build/$DMG_NAME" \
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
@@ -137,33 +146,7 @@ jobs:
             exit 1
           fi
 
-          xcrun stapler staple "$APP_PATH"
-
-      - name: Create DMG
-        timeout-minutes: 30
-        env:
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-        run: |
-          DMG_NAME="Pomdoro-${BUILD_NUMBER}.dmg"
-
-          mkdir -p build/dmg
-          cp -R build/export/Pomdoro.app build/dmg/
-          ln -s /Applications build/dmg/Applications
-
-          hdiutil create -volname "Pomdoro" \
-            -srcfolder build/dmg \
-            -ov -format UDZO \
-            "build/$DMG_NAME"
-
-          xcrun notarytool submit "build/$DMG_NAME" \
-            --apple-id "$APPLE_ID" \
-            --password "$APPLE_ID_PASSWORD" \
-            --team-id "$APPLE_TEAM_ID" \
-            --timeout 20m \
-            --wait
-
+          # Staple the ticket to the DMG
           xcrun stapler staple "build/$DMG_NAME"
 
       - name: Create GitHub Release
