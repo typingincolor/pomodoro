@@ -39,4 +39,19 @@ final class PomodoroManagerTests: XCTestCase {
         XCTAssertTrue(manager.timer1.isRunning)
         XCTAssertFalse(manager.timer2.isRunning)
     }
+
+    func testChainingForcesCountdownMode() {
+        manager.timer1.mode = .countUp
+        manager.timer2.mode = .countUp
+        manager.toggleChain()
+        XCTAssertTrue(manager.isChained)
+        XCTAssertEqual(manager.timer1.mode, .countdown)
+        XCTAssertEqual(manager.timer2.mode, .countdown)
+    }
+
+    func testUnchainRestoresIndependence() {
+        manager.toggleChain()
+        manager.toggleChain()
+        XCTAssertFalse(manager.isChained)
+    }
 }

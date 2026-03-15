@@ -31,6 +31,14 @@ final class PomodoroManager {
     func resetTimer1() { timer1.reset() }
     func resetTimer2() { timer2.reset() }
 
+    func toggleChain() {
+        isChained.toggle()
+        if isChained {
+            timer1.mode = .countdown
+            timer2.mode = .countdown
+        }
+    }
+
     func tick() {
         timer1.tick()
         timer2.tick()
