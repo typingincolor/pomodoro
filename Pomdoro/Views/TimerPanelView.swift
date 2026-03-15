@@ -50,6 +50,7 @@ struct TimerPanelView: View {
                     .accessibilityIdentifier("timer\(label)Display")
                     .accessibilityValue(String(format: "%02d:%02d", timer.displayMinutes, timer.displaySeconds))
                     .padding(.top, 6 * scale)
+                    .contentShape(Rectangle())
                     .gesture(
                         DragGesture(minimumDistance: 0)
                             .onEnded { value in
