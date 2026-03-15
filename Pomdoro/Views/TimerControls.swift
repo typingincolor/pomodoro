@@ -5,6 +5,7 @@ struct TimerControls: View {
     let isCompleted: Bool
     let isPaused: Bool
     let scale: CGFloat
+    let label: String
     let onPlay: () -> Void
     let onPause: () -> Void
     let onReset: () -> Void
@@ -27,6 +28,7 @@ struct TimerControls: View {
                 }
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier("timer\(label)PlayPause")
             .frame(width: buttonSize * scale, height: buttonSize * scale)
 
             Button(action: onReset) {
@@ -43,6 +45,7 @@ struct TimerControls: View {
                 }
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier("timer\(label)Reset")
             .frame(width: buttonSize * scale, height: buttonSize * scale)
             .disabled(isRunning && !isCompleted && !isPaused)
             .opacity((isPaused || isCompleted || !isRunning) ? 1.0 : 0.3)

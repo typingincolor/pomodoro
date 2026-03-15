@@ -29,7 +29,6 @@
 		69C99C54CE00DD56A8773892 /* MockSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */; };
 		6EBAE4E6A6B89C132504EA12 /* NotificationSending.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C806522CA337A352F004A0 /* NotificationSending.swift */; };
 		7165600109A8C6F6B3D7B104 /* SevenSegmentDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */; };
-		81DC72508469D51EEEA1E21B /* PomdoroUIPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA19A4BEDC4B670511DEC98 /* PomdoroUIPlaceholderTests.swift */; };
 		9111BB7E9101DEAA31B2122A /* NotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */; };
 		9E3D0E6ECD422982722C688B /* PomdoroPlaceholderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A11DEF9BA6D02E1FDD31AE /* PomdoroPlaceholderTests.swift */; };
 		A7032B12863B291F4448DA11 /* MockNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */; };
@@ -45,6 +44,7 @@
 		CE95E4C4C66878B4D8994EF4 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 597BABF5060A804AD1AC6190 /* CLAUDE.md */; };
 		D0C2AA767F106F549AB211F2 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = F0BAA277BDDA62F72948C442 /* CLAUDE.md */; };
 		D41B27E305EF36569505E7CF /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B29F3F0C73C1E65E6D19CCE /* CLAUDE.md */; };
+		D7E422972F2D1FE97B14DD6D /* PomdoroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E639432B3B68DCA2EF70207 /* PomdoroUITests.swift */; };
 		EA33904E40B869BD33D3E1CF /* completion-alarm.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B646614F11E34FC34AB60BB8 /* completion-alarm.aiff */; };
 		F4BFD4F7BBDB8E825067C5C5 /* AppSettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B41306752A466DF441DA5 /* AppSettingsStoreTests.swift */; };
 		F86BF60BBAC7193DAE3F238D /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09417D69B7C0A0FBEC84A244 /* TimerModel.swift */; };
@@ -79,7 +79,6 @@
 		26FCC96D00F4B99A98118856 /* ChainLinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainLinkButton.swift; sourceTree = "<group>"; };
 		2C302A03143E577E5ED427C3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F5002333C2D8773D565ED33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3CA19A4BEDC4B670511DEC98 /* PomdoroUIPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroUIPlaceholderTests.swift; sourceTree = "<group>"; };
 		3E64C42E1944192C30226B8B /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		48A4270E123F68B96363667D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigit.swift; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationSender.swift; sourceTree = "<group>"; };
 		7B29F3F0C73C1E65E6D19CCE /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		7E358F827F3D7CD70AD63202 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
+		7E639432B3B68DCA2EF70207 /* PomdoroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroUITests.swift; sourceTree = "<group>"; };
 		7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerTests.swift; sourceTree = "<group>"; };
 		83A16E76FDD147F320F66020 /* TimerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControls.swift; sourceTree = "<group>"; };
 		90DA251BD0003031CD424060 /* SevenSegmentDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDisplay.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E4AA3F69877E82926D317D /* CLAUDE.md */,
-				3CA19A4BEDC4B670511DEC98 /* PomdoroUIPlaceholderTests.swift */,
+				7E639432B3B68DCA2EF70207 /* PomdoroUITests.swift */,
 			);
 			path = PomdoroUITests;
 			sourceTree = "<group>";
@@ -430,7 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81DC72508469D51EEEA1E21B /* PomdoroUIPlaceholderTests.swift in Sources */,
+				D7E422972F2D1FE97B14DD6D /* PomdoroUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

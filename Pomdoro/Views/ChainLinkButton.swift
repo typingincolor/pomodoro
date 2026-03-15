@@ -22,6 +22,7 @@ struct ChainLinkButton: View {
                 .opacity(isChained ? 1.0 : 0.5)
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("chainLinkButton")
         .animation(.easeInOut(duration: 0.2), value: isChained)
     }
 }

@@ -5,6 +5,7 @@ struct SevenSegmentDisplay: View {
     let seconds: Int
     let color: Color
     let scale: CGFloat
+    var label: String = ""
     var selectedField: TimerField? = nil
 
     private var minuteTens: Int { min(minutes, 99) / 10 }
@@ -34,6 +35,8 @@ struct SevenSegmentDisplay: View {
             RoundedRectangle(cornerRadius: 4 * scale)
                 .stroke(isSelected ? color.opacity(0.4) : .clear, lineWidth: 1.5)
         )
+        .accessibilityIdentifier("timer\(label)\(field == .minutes ? "Minutes" : "Seconds")")
+        .accessibilityValue(field == .minutes ? String(format: "%02d", minutes) : String(format: "%02d", seconds))
     }
 
     private var colonView: some View {

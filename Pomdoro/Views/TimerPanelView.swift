@@ -28,7 +28,7 @@ struct TimerPanelView: View {
 
                 VStack(spacing: 0) {
                     HStack {
-                        ModeArrow(mode: timer.mode, scale: scale, action: onToggleMode)
+                        ModeArrow(mode: timer.mode, scale: scale, label: label, action: onToggleMode)
                         Spacer()
                         Text(label)
                             .font(.system(size: 10 * scale, weight: .semibold))
@@ -42,8 +42,11 @@ struct TimerPanelView: View {
                         seconds: timer.displaySeconds,
                         color: color,
                         scale: scale,
+                        label: label,
                         selectedField: selectedField
                     )
+                    .accessibilityIdentifier("timer\(label)Display")
+                    .accessibilityValue(String(format: "%02d:%02d", timer.displayMinutes, timer.displaySeconds))
                     .padding(.top, 6 * scale)
                     .gesture(
                         DragGesture(minimumDistance: 0)
@@ -81,6 +84,7 @@ struct TimerPanelView: View {
                     isCompleted: timer.isCompleted,
                     isPaused: !timer.isRunning && timer.displayMinutes + timer.displaySeconds > 0,
                     scale: scale,
+                    label: label,
                     onPlay: onPlay,
                     onPause: onPause,
                     onReset: onReset
