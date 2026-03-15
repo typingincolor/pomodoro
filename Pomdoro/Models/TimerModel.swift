@@ -51,6 +51,13 @@ final class TimerModel {
         isRunning = true
     }
 
+    func pause() {
+        guard isRunning, let startDate else { return }
+        elapsedAtPause += timeProvider.now.timeIntervalSince(startDate)
+        self.startDate = nil
+        isRunning = false
+    }
+
     func tick() {
         guard isRunning, let startDate else { return }
         let elapsed = timeProvider.now.timeIntervalSince(startDate) + elapsedAtPause

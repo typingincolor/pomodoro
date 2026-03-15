@@ -33,4 +33,31 @@ final class TimerModelTests: XCTestCase {
         XCTAssertEqual(timer.displayMinutes, 2)
         XCTAssertEqual(timer.displaySeconds, 5)
     }
+
+    func testPauseAndResume() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.setTime(minutes: 10, seconds: 0)
+        timer.mode = .countdown
+
+        timer.play()
+        timeProvider.advance(by: 60)
+        timer.tick()
+        timer.pause()
+
+        XCTAssertFalse(timer.isRunning)
+        XCTAssertEqual(timer.displayMinutes, 9)
+        XCTAssertEqual(timer.displaySeconds, 0)
+
+        timeProvider.advance(by: 300)
+        timer.tick()
+        XCTAssertEqual(timer.displayMinutes, 9)
+        XCTAssertEqual(timer.displaySeconds, 0)
+
+        timer.play()
+        timeProvider.advance(by: 30)
+        timer.tick()
+
+        XCTAssertEqual(timer.displayMinutes, 8)
+        XCTAssertEqual(timer.displaySeconds, 30)
+    }
 }
