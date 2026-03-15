@@ -12,6 +12,7 @@
 		26ECC36B119C7567E428C54A /* TimerModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D4796D78118EED56EC0E5 /* TimerModelTests.swift */; };
 		40F72178BC1E9E85E2A75356 /* SoundPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061CF03E0411561BD208DB10 /* SoundPlaying.swift */; };
 		469A68DF467FE9F6D66823D3 /* SettingsStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */; };
+		50E87F4BC39703E7A6C18C3F /* SevenSegmentDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DA251BD0003031CD424060 /* SevenSegmentDisplay.swift */; };
 		52B6BBAD3B8C203A5E5AAB01 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 7E358F827F3D7CD70AD63202 /* CLAUDE.md */; };
 		55DA8751ACA552101723D8A0 /* MockSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDFBAEC91E7BB5B692EBA7A /* MockSoundPlayer.swift */; };
 		5B712B5E79BCAFFCCB81F717 /* PomodoroManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DB6B7ACE631704A33C2388 /* PomodoroManagerTests.swift */; };
@@ -25,6 +26,7 @@
 		A7032B12863B291F4448DA11 /* MockNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */; };
 		ABFC4F0C186120163ED3D018 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 5DEFEC65199723D93E21BF28 /* CLAUDE.md */; };
 		B3538F1388C7D7919702367C /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 017B500108FCFC22E3E71B2D /* CLAUDE.md */; };
+		B442093FA06FF3B75D395F6C /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 5236F4F6D99847549A4086C4 /* CLAUDE.md */; };
 		B6D1CCF46257A96BC221E44B /* SevenSegmentDigitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25526E31FF890AEB1DBB0C2 /* SevenSegmentDigitTests.swift */; };
 		CE95E4C4C66878B4D8994EF4 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 597BABF5060A804AD1AC6190 /* CLAUDE.md */; };
 		D0C2AA767F106F549AB211F2 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = F0BAA277BDDA62F72948C442 /* CLAUDE.md */; };
@@ -57,12 +59,14 @@
 		11911702EF00CFF6D00948D5 /* MockSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSettingsStore.swift; sourceTree = "<group>"; };
 		3CA19A4BEDC4B670511DEC98 /* PomdoroUIPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroUIPlaceholderTests.swift; sourceTree = "<group>"; };
 		4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigit.swift; sourceTree = "<group>"; };
+		5236F4F6D99847549A4086C4 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		52A11DEF9BA6D02E1FDD31AE /* PomdoroPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroPlaceholderTests.swift; sourceTree = "<group>"; };
 		597BABF5060A804AD1AC6190 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		5DEFEC65199723D93E21BF28 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		7588156C39CBA918541300F3 /* TimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProvider.swift; sourceTree = "<group>"; };
 		7826C49795E53B0FB967AE25 /* MockNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationSender.swift; sourceTree = "<group>"; };
 		7E358F827F3D7CD70AD63202 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
+		90DA251BD0003031CD424060 /* SevenSegmentDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDisplay.swift; sourceTree = "<group>"; };
 		A0C806522CA337A352F004A0 /* NotificationSending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSending.swift; sourceTree = "<group>"; };
 		A77AB310B486084751550415 /* PomdoroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomdoroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB46EE64EF249CDC93CBDE8 /* PomdoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomdoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +142,9 @@
 		C2594FF30F2B1D8CFADBA01C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5236F4F6D99847549A4086C4 /* CLAUDE.md */,
 				4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */,
+				90DA251BD0003031CD424060 /* SevenSegmentDisplay.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,6 +299,7 @@
 			files = (
 				B3538F1388C7D7919702367C /* CLAUDE.md in Resources */,
 				ABFC4F0C186120163ED3D018 /* CLAUDE.md in Resources */,
+				B442093FA06FF3B75D395F6C /* CLAUDE.md in Resources */,
 				52B6BBAD3B8C203A5E5AAB01 /* CLAUDE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +331,7 @@
 				21C38F32A4666C002126C625 /* PomodoroManager.swift in Sources */,
 				469A68DF467FE9F6D66823D3 /* SettingsStoring.swift in Sources */,
 				7165600109A8C6F6B3D7B104 /* SevenSegmentDigit.swift in Sources */,
+				50E87F4BC39703E7A6C18C3F /* SevenSegmentDisplay.swift in Sources */,
 				40F72178BC1E9E85E2A75356 /* SoundPlaying.swift in Sources */,
 				090DF8A3D78D26D49AC5ED30 /* TimeProvider.swift in Sources */,
 				F86BF60BBAC7193DAE3F238D /* TimerModel.swift in Sources */,
