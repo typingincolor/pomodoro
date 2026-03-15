@@ -21,4 +21,16 @@ final class TimerModelTests: XCTestCase {
         XCTAssertEqual(timer.displayMinutes, 3)
         XCTAssertEqual(timer.displaySeconds, 30)
     }
+
+    func testCountUpElapsedTime() {
+        let timer = TimerModel(timeProvider: timeProvider)
+        timer.mode = .countUp
+
+        timer.play()
+        timeProvider.advance(by: 125) // 2:05
+        timer.tick()
+
+        XCTAssertEqual(timer.displayMinutes, 2)
+        XCTAssertEqual(timer.displaySeconds, 5)
+    }
 }
