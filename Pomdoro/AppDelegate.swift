@@ -61,6 +61,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         panel?.orderFront(nil)
     }
 
+    func updatePanelSize(for windowSize: WindowSize) {
+        guard let panel else { return }
+        let newSize = panelSize(for: windowSize)
+        let frame = panel.frame
+        let newFrame = NSRect(
+            x: frame.origin.x,
+            y: frame.origin.y + frame.height - newSize.height,
+            width: newSize.width,
+            height: newSize.height
+        )
+        panel.setFrame(newFrame, display: true, animate: true)
+    }
+
     private func panelSize(for windowSize: WindowSize) -> NSSize {
         let width = windowSize.width
         let aspectRatio: CGFloat = 1.6

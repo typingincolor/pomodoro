@@ -99,6 +99,11 @@ struct MainTimerView: View {
         .sheet(isPresented: $showSettings) {
             SettingsView(settings: settings)
         }
+        .onChange(of: settings.windowSize) { newSize in
+            if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
+                appDelegate.updatePanelSize(for: newSize)
+            }
+        }
     }
 
     @State private var keyMonitor: Any?
