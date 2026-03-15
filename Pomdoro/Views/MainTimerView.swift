@@ -4,7 +4,7 @@ struct MainTimerView: View {
     @Environment(PomodoroManager.self) private var manager
     @Environment(\.colorScheme) private var colorScheme
 
-    let settings: any SettingsStoring
+    let settings: AppSettingsStore
     let scale: CGFloat
     let onDetach: (() -> Void)?
 

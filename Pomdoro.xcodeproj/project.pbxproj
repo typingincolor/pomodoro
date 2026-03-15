@@ -17,6 +17,7 @@
 		26ECC36B119C7567E428C54A /* TimerModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D4796D78118EED56EC0E5 /* TimerModelTests.swift */; };
 		40F72178BC1E9E85E2A75356 /* SoundPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061CF03E0411561BD208DB10 /* SoundPlaying.swift */; };
 		469A68DF467FE9F6D66823D3 /* SettingsStoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED757EEAF0A3E55C447CC75 /* SettingsStoring.swift */; };
+		4F25193F2987F9BFB48B423A /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 3E64C42E1944192C30226B8B /* CLAUDE.md */; };
 		50E87F4BC39703E7A6C18C3F /* SevenSegmentDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DA251BD0003031CD424060 /* SevenSegmentDisplay.swift */; };
 		52B6BBAD3B8C203A5E5AAB01 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 7E358F827F3D7CD70AD63202 /* CLAUDE.md */; };
 		55CECF340B831079FE218C51 /* TimerPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18D24D8862FF3D88532086 /* TimerPanelView.swift */; };
@@ -45,6 +46,7 @@
 		D0C2AA767F106F549AB211F2 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = F0BAA277BDDA62F72948C442 /* CLAUDE.md */; };
 		D41B27E305EF36569505E7CF /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B29F3F0C73C1E65E6D19CCE /* CLAUDE.md */; };
 		EA33904E40B869BD33D3E1CF /* completion-alarm.aiff in Resources */ = {isa = PBXBuildFile; fileRef = B646614F11E34FC34AB60BB8 /* completion-alarm.aiff */; };
+		F4BFD4F7BBDB8E825067C5C5 /* AppSettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B41306752A466DF441DA5 /* AppSettingsStoreTests.swift */; };
 		F86BF60BBAC7193DAE3F238D /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09417D69B7C0A0FBEC84A244 /* TimerModel.swift */; };
 		FB52591368F49FC56A502B15 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = D0E4AA3F69877E82926D317D /* CLAUDE.md */; };
 		FDA9209307A2E472E20DE9BE /* DigitInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A2C81ED921AB56B394D718 /* DigitInputTests.swift */; };
@@ -78,6 +80,7 @@
 		2C302A03143E577E5ED427C3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2F5002333C2D8773D565ED33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CA19A4BEDC4B670511DEC98 /* PomdoroUIPlaceholderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomdoroUIPlaceholderTests.swift; sourceTree = "<group>"; };
+		3E64C42E1944192C30226B8B /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		48A4270E123F68B96363667D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		4FA9B5A636CE3245E48A749D /* SevenSegmentDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDigit.swift; sourceTree = "<group>"; };
 		5236F4F6D99847549A4086C4 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerTests.swift; sourceTree = "<group>"; };
 		83A16E76FDD147F320F66020 /* TimerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControls.swift; sourceTree = "<group>"; };
 		90DA251BD0003031CD424060 /* SevenSegmentDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDisplay.swift; sourceTree = "<group>"; };
+		977B41306752A466DF441DA5 /* AppSettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsStoreTests.swift; sourceTree = "<group>"; };
 		A0C806522CA337A352F004A0 /* NotificationSending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSending.swift; sourceTree = "<group>"; };
 		A77AB310B486084751550415 /* PomdoroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomdoroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB46EE64EF249CDC93CBDE8 /* PomdoroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomdoroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +122,7 @@
 		09FBECACC8C0CBE9AA81EE2E /* PomdoroTests */ = {
 			isa = PBXGroup;
 			children = (
+				977B41306752A466DF441DA5 /* AppSettingsStoreTests.swift */,
 				597BABF5060A804AD1AC6190 /* CLAUDE.md */,
 				71A2C81ED921AB56B394D718 /* DigitInputTests.swift */,
 				7E77E76A3849EC5984B5179F /* NotificationManagerTests.swift */,
@@ -145,6 +150,7 @@
 		56F91A825BFDA816BBB8FC0B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3E64C42E1944192C30226B8B /* CLAUDE.md */,
 				B646614F11E34FC34AB60BB8 /* completion-alarm.aiff */,
 				B36B07D8F9B6C61C38DA4574 /* transition-beep.aiff */,
 			);
@@ -362,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3538F1388C7D7919702367C /* CLAUDE.md in Resources */,
+				4F25193F2987F9BFB48B423A /* CLAUDE.md in Resources */,
 				ABFC4F0C186120163ED3D018 /* CLAUDE.md in Resources */,
 				B442093FA06FF3B75D395F6C /* CLAUDE.md in Resources */,
 				52B6BBAD3B8C203A5E5AAB01 /* CLAUDE.md in Resources */,
@@ -378,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BFD4F7BBDB8E825067C5C5 /* AppSettingsStoreTests.swift in Sources */,
 				FDA9209307A2E472E20DE9BE /* DigitInputTests.swift in Sources */,
 				A7032B12863B291F4448DA11 /* MockNotificationSender.swift in Sources */,
 				69C99C54CE00DD56A8773892 /* MockSettingsStore.swift in Sources */,
