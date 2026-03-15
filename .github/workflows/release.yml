@@ -106,6 +106,7 @@ jobs:
             -exportPath build/export
 
       - name: Notarize app
+        timeout-minutes: 30
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
@@ -119,6 +120,7 @@ jobs:
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
+            --timeout 20m \
             --wait 2>&1) || true
 
           echo "$SUBMISSION_OUT"
@@ -138,6 +140,7 @@ jobs:
           xcrun stapler staple "$APP_PATH"
 
       - name: Create DMG
+        timeout-minutes: 30
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
@@ -158,6 +161,7 @@ jobs:
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
+            --timeout 20m \
             --wait
 
           xcrun stapler staple "build/$DMG_NAME"
