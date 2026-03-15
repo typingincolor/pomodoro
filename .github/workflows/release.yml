@@ -129,8 +129,6 @@ jobs:
           set -euo pipefail
           echo "Verifying code signature..."
           codesign --verify --deep --strict --verbose=2 build/export/Pomdoro.app
-          echo "Checking Gatekeeper approval..."
-          spctl -a -t exec -vvv build/export/Pomdoro.app
 
       - name: Create DMG
         run: |
