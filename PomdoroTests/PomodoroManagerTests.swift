@@ -82,4 +82,32 @@ final class PomodoroManagerTests: XCTestCase {
         XCTAssertEqual(soundPlayer.completionAlarmCount, 1)
         XCTAssertEqual(notificationSender.sentNotifications.count, 2)
     }
+
+    func testChainedPausePausesActiveTimer() {
+        manager.toggleChain()
+        manager.timer1.setTime(minutes: 0, seconds: 10)
+        manager.timer2.setTime(minutes: 0, seconds: 5)
+        manager.playChained()
+        timeProvider.advance(by: 3)
+        manager.tick()
+        manager.pauseChained()
+        XCTAssertFalse(manager.timer1.isRunning)
+        XCTAssertEqual(manager.timer1.displaySeconds, 7)
+        manager.playChained()
+        XCTAssertTrue(manager.timer1.isRunning)
+    }
+
+    func testChainedResetResetsBothTimers() {
+        manager.toggleChain()
+        manager.timer1.setTime(minutes: 5, seconds: 0)
+        manager.timer2.setTime(minutes: 3, seconds: 0)
+        manager.playChained()
+        timeProvider.advance(by: 60)
+        manager.tick()
+        manager.pauseChained()
+        manager.resetChained()
+        XCTAssertEqual(manager.timer1.displayMinutes, 5)
+        XCTAssertEqual(manager.timer2.displayMinutes, 3)
+        XCTAssertEqual(manager.chainPhase, .idle)
+    }
 }

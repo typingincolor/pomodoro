@@ -46,8 +46,37 @@ final class PomodoroManager {
 
     func playChained() {
         guard isChained else { return }
-        chainPhase = .timer1Running
-        timer1.play()
+        if chainPhase == .idle {
+            chainPhase = .timer1Running
+            timer1.play()
+        } else {
+            resumeChained()
+        }
+    }
+
+    func pauseChained() {
+        guard isChained else { return }
+        switch chainPhase {
+        case .timer1Running: timer1.pause()
+        case .timer2Running: timer2.pause()
+        default: break
+        }
+    }
+
+    func resumeChained() {
+        guard isChained else { return }
+        switch chainPhase {
+        case .timer1Running: timer1.play()
+        case .timer2Running: timer2.play()
+        default: break
+        }
+    }
+
+    func resetChained() {
+        guard isChained else { return }
+        timer1.reset()
+        timer2.reset()
+        chainPhase = .idle
     }
 
     func tick() {
