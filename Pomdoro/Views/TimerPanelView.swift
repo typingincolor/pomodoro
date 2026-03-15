@@ -13,6 +13,7 @@ struct TimerPanelView: View {
     let onReset: () -> Void
     let onToggleMode: () -> Void
     let onStopAlarm: () -> Void
+    let onFocus: () -> Void
 
     @Binding var selectedField: TimerField?
     @Binding var pendingDigit: Int?
@@ -45,7 +46,7 @@ struct TimerPanelView: View {
                         color: color,
                         scale: scale,
                         label: label,
-                        selectedField: selectedField
+                        selectedField: isFocused ? selectedField : nil
                     )
                     .accessibilityIdentifier("timer\(label)Display")
                     .accessibilityValue(String(format: "%02d:%02d", timer.displayMinutes, timer.displaySeconds))
@@ -54,7 +55,9 @@ struct TimerPanelView: View {
                     .gesture(
                         DragGesture(minimumDistance: 0)
                             .onEnded { value in
-                                handleDisplayTap(at: value.location)
+                                let wasFocused = isFocused
+                                onFocus()
+                                handleDisplayTap(at: value.location, toggleOff: wasFocused)
                             }
                     )
 
@@ -78,7 +81,7 @@ struct TimerPanelView: View {
             .frame(width: 220 * scale)
             .overlay(
                 RoundedRectangle(cornerRadius: 10 * scale)
-                    .stroke(isFocused ? color.opacity(0.2) : .clear, lineWidth: 2)
+                    .stroke(color.opacity(0.2), lineWidth: 2)
             )
 
             if showControls {
@@ -98,25 +101,16 @@ struct TimerPanelView: View {
         }
     }
 
-    private func handleDisplayTap(at location: CGPoint) {
+    private func handleDisplayTap(at location: CGPoint, toggleOff: Bool) {
         guard !timer.isRunning else { return }
-        let midpoint = 140 * scale
-        if location.x < midpoint {
-            if selectedField == .minutes {
-                selectedField = nil
-                pendingDigit = nil
-            } else {
-                selectedField = .minutes
-                pendingDigit = nil
-            }
+        let midpoint = 64 * scale
+        let tappedField: TimerField = location.x < midpoint ? .minutes : .seconds
+        if toggleOff && selectedField == tappedField {
+            selectedField = nil
+            pendingDigit = nil
         } else {
-            if selectedField == .seconds {
-                selectedField = nil
-                pendingDigit = nil
-            } else {
-                selectedField = .seconds
-                pendingDigit = nil
-            }
+            selectedField = tappedField
+            pendingDigit = nil
         }
     }
 }

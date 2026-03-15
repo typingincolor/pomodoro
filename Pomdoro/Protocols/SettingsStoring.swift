@@ -20,8 +20,6 @@ enum WindowSize: String, CaseIterable, Sendable {
 @MainActor
 protocol SettingsStoring: AnyObject {
     var digitColorHex: String { get set }
-    var transitionSound: String { get set }
-    var completionSound: String { get set }
     var defaultT1Minutes: Int { get set }
     var defaultT1Seconds: Int { get set }
     var defaultT2Minutes: Int { get set }

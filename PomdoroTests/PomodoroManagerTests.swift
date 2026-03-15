@@ -64,7 +64,7 @@ final class PomodoroManagerTests: XCTestCase {
         manager.tick()
         XCTAssertTrue(manager.timer1.isCompleted)
         XCTAssertTrue(manager.timer2.isRunning)
-        XCTAssertEqual(soundPlayer.transitionBeepCount, 1)
+        XCTAssertEqual(soundPlayer.alarmCount, 1)
         XCTAssertEqual(notificationSender.sentNotifications.count, 1)
         XCTAssertEqual(notificationSender.sentNotifications.first?.title, "Timer 1 complete")
     }
@@ -79,7 +79,7 @@ final class PomodoroManagerTests: XCTestCase {
         timeProvider.advance(by: 5)
         manager.tick()
         XCTAssertTrue(manager.timer2.isCompleted)
-        XCTAssertEqual(soundPlayer.completionAlarmCount, 1)
+        XCTAssertEqual(soundPlayer.alarmCount, 2)
         XCTAssertEqual(notificationSender.sentNotifications.count, 2)
     }
 
@@ -117,10 +117,10 @@ final class PomodoroManagerTests: XCTestCase {
         manager.playTimer1()
         timeProvider.advance(by: 3)
         manager.tick()
-        XCTAssertEqual(soundPlayer.completionAlarmCount, 1)
+        XCTAssertEqual(soundPlayer.alarmCount, 1)
         XCTAssertEqual(notificationSender.sentNotifications.count, 1)
         timeProvider.advance(by: 1)
         manager.tick()
-        XCTAssertEqual(soundPlayer.completionAlarmCount, 1)
+        XCTAssertEqual(soundPlayer.alarmCount, 1)
     }
 }

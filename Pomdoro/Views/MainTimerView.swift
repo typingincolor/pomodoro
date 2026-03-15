@@ -6,7 +6,7 @@ struct MainTimerView: View {
 
     let settings: AppSettingsStore
     let scale: CGFloat
-    let onDetach: (() -> Void)?
+    let onOpenSettings: () -> Void
 
     @State private var focusedTimer: Int = 1
     @State private var showSettings = false
@@ -14,6 +14,14 @@ struct MainTimerView: View {
     @State private var editingPendingDigit: Int?
 
     var body: some View {
+        if showSettings {
+            SettingsView(settings: settings, onDone: { showSettings = false })
+        } else {
+            timerBody
+        }
+    }
+
+    private var timerBody: some View {
         VStack(alignment: .leading, spacing: 0) {
                 TimerPanelView(
                     timer: manager.timer1,
@@ -31,8 +39,9 @@ struct MainTimerView: View {
                         manager.timer1.mode = manager.timer1.mode == .countdown ? .countUp : .countdown
                     },
                     onStopAlarm: { manager.stopAlarm() },
-                    selectedField: focusedTimer == 1 ? $editingTimerField : .constant(nil),
-                    pendingDigit: focusedTimer == 1 ? $editingPendingDigit : .constant(nil)
+                    onFocus: { focusedTimer = 1 },
+                    selectedField: $editingTimerField,
+                    pendingDigit: $editingPendingDigit
                 )
 
                 HStack {
@@ -62,21 +71,14 @@ struct MainTimerView: View {
                         manager.timer2.mode = manager.timer2.mode == .countdown ? .countUp : .countdown
                     },
                     onStopAlarm: { manager.stopAlarm() },
-                    selectedField: focusedTimer == 2 ? $editingTimerField : .constant(nil),
-                    pendingDigit: focusedTimer == 2 ? $editingPendingDigit : .constant(nil)
+                    onFocus: { focusedTimer = 2 },
+                    selectedField: $editingTimerField,
+                    pendingDigit: $editingPendingDigit
                 )
 
                 HStack {
-                    if let onDetach {
-                        Button(action: onDetach) {
-                            Image(systemName: "pin")
-                                .font(.system(size: 12 * scale))
-                                .foregroundColor(Color(white: 0.33))
-                        }
-                        .buttonStyle(.plain)
-                    }
                     Spacer()
-                    Button(action: { showSettings.toggle() }) {
+                    Button(action: { showSettings = true }) {
                         Image(systemName: "gearshape")
                             .font(.system(size: 12 * scale))
                             .foregroundColor(Color(white: 0.33))
@@ -103,14 +105,6 @@ struct MainTimerView: View {
                 NSEvent.removeMonitor(keyMonitor)
             }
             keyMonitor = nil
-        }
-        .sheet(isPresented: $showSettings) {
-            SettingsView(settings: settings)
-        }
-        .onChange(of: settings.windowSize) { newSize in
-            if let appDelegate = NSApplication.shared.delegate as? AppDelegate {
-                appDelegate.updatePanelSize(for: newSize)
-            }
         }
     }
 

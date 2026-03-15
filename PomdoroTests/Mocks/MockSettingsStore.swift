@@ -4,8 +4,6 @@ import SwiftUI
 @MainActor
 final class MockSettingsStore: SettingsStoring {
     var digitColorHex: String = "FFFFFF"
-    var transitionSound: String = "transition-beep"
-    var completionSound: String = "completion-alarm"
     var defaultT1Minutes: Int = 25
     var defaultT1Seconds: Int = 0
     var defaultT2Minutes: Int = 5

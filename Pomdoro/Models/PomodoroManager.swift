@@ -115,14 +115,15 @@ final class PomodoroManager {
         if chainPhase == .timer1Running && timer1.hasNotifiedCompletion && !hasHandledTimer1Completion {
             hasHandledTimer1Completion = true
             chainPhase = .timer2Running
-            soundPlayer.playTransitionBeep()
+            soundPlayer.playAlarm()
+            isAlarmPlaying = true
             notificationSender.send(title: "Timer 1 complete", body: "Timer 2 started")
             timer2.play()
         }
         if chainPhase == .timer2Running && timer2.hasNotifiedCompletion && !hasHandledTimer2Completion {
             hasHandledTimer2Completion = true
             chainPhase = .completed
-            soundPlayer.playCompletionAlarm()
+            soundPlayer.playAlarm()
             isAlarmPlaying = true
             notificationSender.send(title: "Timer complete!", body: "")
         }
@@ -131,13 +132,13 @@ final class PomodoroManager {
     private func handleUnchainedTick() {
         if timer1.hasNotifiedCompletion && !hasHandledTimer1Completion {
             hasHandledTimer1Completion = true
-            soundPlayer.playCompletionAlarm()
+            soundPlayer.playAlarm()
             isAlarmPlaying = true
             notificationSender.send(title: "Timer complete!", body: "Timer 1 finished")
         }
         if timer2.hasNotifiedCompletion && !hasHandledTimer2Completion {
             hasHandledTimer2Completion = true
-            soundPlayer.playCompletionAlarm()
+            soundPlayer.playAlarm()
             isAlarmPlaying = true
             notificationSender.send(title: "Timer complete!", body: "Timer 2 finished")
         }

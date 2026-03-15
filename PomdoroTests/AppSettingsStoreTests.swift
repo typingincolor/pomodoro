@@ -6,7 +6,7 @@ final class AppSettingsStoreTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let defaults = UserDefaults.standard
-        for key in ["digitColorHex", "transitionSound", "completionSound",
+        for key in ["digitColorHex",
                      "defaultT1Minutes", "defaultT1Seconds",
                      "defaultT2Minutes", "defaultT2Seconds", "windowSize"] {
             defaults.removeObject(forKey: key)
