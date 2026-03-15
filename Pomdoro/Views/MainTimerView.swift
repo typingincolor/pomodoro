@@ -35,11 +35,15 @@ struct MainTimerView: View {
                     pendingDigit: focusedTimer == 1 ? $editingPendingDigit : .constant(nil)
                 )
 
-                ChainLinkButton(
-                    isChained: manager.isChained,
-                    scale: scale,
-                    action: { manager.toggleChain() }
-                )
+                HStack {
+                    Spacer()
+                    ChainLinkButton(
+                        isChained: manager.isChained,
+                        scale: scale,
+                        action: { manager.toggleChain() }
+                    )
+                    Spacer()
+                }
                 .padding(.vertical, 6 * scale)
 
                 TimerPanelView(
