@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-test:
+  build:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
@@ -34,6 +34,28 @@ jobs:
             -configuration Debug \
             build 2>&1 | tee build.log | tail -30
 
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+
+  test:
+    needs: build
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.3.app/Contents/Developer
+
+      - name: Install xcodegen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
       - name: Run unit tests
         run: |
           set -o pipefail
@@ -42,11 +64,9 @@ jobs:
             -destination 'platform=macOS' \
             -only-testing:PomdoroTests 2>&1 | tee test.log | tail -30
 
-      - name: Upload logs on failure
+      - name: Upload test log on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: build-logs
-          path: |
-            build.log
-            test.log
+          name: test-log
+          path: test.log
