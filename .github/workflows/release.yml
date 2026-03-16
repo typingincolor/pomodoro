@@ -198,7 +198,7 @@ jobs:
 
       - name: Update Homebrew tap
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
         run: |
           set -euo pipefail
           DMG_URL="https://github.com/typingincolor/pomodoro/releases/download/v${BUILD_NUMBER}/${DMG_NAME}"
